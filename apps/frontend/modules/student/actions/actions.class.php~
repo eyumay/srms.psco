@@ -1,0 +1,329 @@
+<?php
+
+/**
+ * student actions.
+ *
+ * @package    srmsnew
+ * @subpackage student
+ * @author     EyuelG
+ * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ */
+class studentActions extends sfActions
+{
+  public function executeIndex(sfWebRequest $request)
+  {
+        $this->getUser()->setAttribute('activelink', 1);
+        
+        $this->pager = new sfDoctrinePager('Student', 10);
+        $this->pager->setPage($request->getParameter('page', 1));
+        $this->pager->init();  
+        $departments = new Student();
+        $this->departments = $departments->getAllDepartments();  
+  }
+  public function executeList(sfWebRequest $request)
+  {
+    $this->students = Doctrine_Core::getTable('Student')
+      ->createQuery('a')
+      ->execute();
+  }
+  
+
+  public function executeShow(sfWebRequest $request)
+  {
+    $this->student = Doctrine_Core::getTable('Student')->find(array($request->getParameter('id')));
+    $this->forward404Unless($this->student);
+  }
+
+  public function executeNew(sfWebRequest $request)
+  {
+    $this->form = new StudentForm();
+  }
+
+  public function executeCreate(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->isMethod(sfRequest::POST));
+
+    $this->form = new StudentForm();
+
+    /*$this->processForm($request, $this->form);
+
+    $this->setTemplate('new');
+    */ 
+    if($this->processForm($request, $this->form))
+    {
+        $this->getUser()->setFlash('notice', 'Student has been successfully registered');
+        $this->redirect('student/index');
+    } 
+	 else 
+	 {
+        $this->getUser()->setFlash('error', 'Error in form');
+        $this->setTemplate('new'); // don't render createSuccess.php, but newSuccess.php
+    }
+    $this->setTemplate('new');    
+  }
+
+  public function executeEdit(sfWebRequest $request)
+  {
+    $this->forward404Unless($student = Doctrine_Core::getTable('Student')->find(array($request->getParameter('id'))), sprintf('Object student does not exist (%s).', $request->getParameter('id')));
+    $this->form = new StudentForm($student);
+  }
+
+  public function executeUpdate(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
+    $this->forward404Unless($student = Doctrine_Core::getTable('Student')->find(array($request->getParameter('id'))), sprintf('Object student does not exist (%s).', $request->getParameter('id')));
+    $this->form = new StudentForm($student);
+
+    $this->processForm($request, $this->form);
+
+    $this->setTemplate('edit');
+  }
+
+  public function executeDelete(sfWebRequest $request)
+  {
+    $request->checkCSRFProtection();
+
+    $this->forward404Unless($student = Doctrine_Core::getTable('Student')->find(array($request->getParameter('id'))), sprintf('Object student does not exist (%s).', $request->getParameter('id')));
+    $student->delete();
+
+    $this->redirect('student/index');
+  }
+
+  protected function processForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    if ($form->isValid())
+    {
+      $student = $form->save();
+      return true;
+    }
+    else{
+    	return false; 
+    }
+  }
+  public function executeFilter(sfWebRequest $request) 
+  {
+    $students = Doctrine_Core::getTable('Student')
+      ->createQuery('a')
+      ->orderBy('a.created_at DESC');
+
+    $student_uid = $request->getParameter('student_uid');
+    $studentname = $request->getParameter('studentname');
+    $fstudentname = $request->getParameter('fstudentname');
+    $gfstudentname = $request->getParameter('fgstudentname');
+    $department = $request->getParameter('department');
+    // $college = $request->getParameter('college');
+
+    if ($student_uid == 'Enter Student Id' && $studentname == 'Enter Student Name'
+           &&$fstudentname=='Enter Father Name'&&$gfstudentname=='Enter GFather Name'
+           && $department == '0') { 
+             $this->redirect('students_list');
+    } 
+            
+    if ($student_uid != 'Enter Student Id') {
+        $students->orWhere('a.student_uid like ?', $student_uid.'%');
+    }
+    /*if ($studentname != 'Enter Student Name') {
+        $users = new Student();
+
+        //getFilteredStudentsId() accepts student name and returns array of students id having that name 
+        $students_id = $users->getFilteredName($studentname);
+
+        // HERE WE COLLECT ALL FILTERED ID'S OF USERS (USERS COULD BE TECHERS OR STUDENTS CORRECT THIS)
+        //CORRECTED BECAUSE THIS SELECT CRITERIA WILL REFINE THE USERS IF THEIR ID EXISTS FROM           STUDENT TABLE
+        if($students_id==null){
+          $students->orWhere('a.student_uid = ?', 0);
+        }
+        else
+        {
+          foreach ($students_id as $id) {
+            $students->orWhere('a.student_uid = ?', $id['id_number']);
+          }
+        }
+       //$students->andWhere('a.student_uid = ?', $student_uid);
+    }
+
+    if($fstudentname!='Enter Father Name') {
+       $fathers = new Student();
+       $studFathers=$fathers->getFilteredFaName($fstudentname);
+       if($studFathers==null){
+         $students->orWhere('a.student_uid = ?', 0);
+       }
+       else
+       {
+         foreach ($studFathers as $studFather) {
+           $students->andWhere('a.student_uid = ?', $studFather['id_number']);
+         }
+       }
+     } 
+       
+    if($gfstudentname!='Enter GFather Name') {
+      $gfathers = new Student();
+      $studgFathers=$gfathers->getFilteredGaFaName($gfstudentname);
+          
+      if($studgFathers==null){
+        $students->andWhere('a.student_uid = ?', 0);
+      }
+      else
+      {
+        foreach ($studgFathers as $studgFather) {
+          $students->orWhere('a.student_uid = ?', $studgFather['id_number']);
+        }
+      }
+    }
+    if ($department != '0') {        
+      // $students=Doctrine_query::create()
+      // ->from('Student s')
+      $students->innerjoin('a.Program p')
+         ->innerjoin('p.Department d')
+         ->andwhere('d.id=?',$department);              
+             
+    }  
+    */
+         
+    $this->pager = new sfDoctrinePager('Student', 10);
+    $this->pager->setPage($request->getParameter('page', 1));
+    $this->pager->init();
+    $this->students = $students->execute();
+    $departments = new Student();
+    $this->departments = $departments->getAllDepartments();
+    //$this->colleges = $departments->getAllColleges();
+  }
+
+
+
+
+
+
+
+
+  public function executeShowregistrationfilterform(sfWebRequest $request)
+  {
+    $this->registrationFilterForm = new FilterForm();
+  }
+
+  public function executeShowregistrationfilterformresults(sfWebRequest $request)
+  {
+	 $this->registrationFilterForm = new FilterForm();
+	 $this->processRegistrationFilterForm($request, $this->registrationFilterForm);
+	 $this->setTemplate('showregistrationfilterform');    
+  }  
+ 
+  public function processRegistrationFilterForm(sfWebRequest $request, sfForm $registrationFilterForm )
+  {    
+    $registrationFilterForm->bind($request->getParameter('filterform'));
+    if ($registrationFilterForm->isValid())
+    {
+		## get form values 	   
+	   $formData		= $this->registrationFilterForm->getValues();  
+	   $programId		= $formData['program_id'];
+		$academicYear	= $formData['academic_year'];
+		## passing $academicYear creates a problem on URL, so pass it using session 
+		$this->getUser()->setAttribute('academicYear', $academicYear);
+		$year				= $formData['year'];
+		$semester		= $formData['semester'];
+     		 
+		$this->redirect('student/showformtoregister?programId='.$programId.'&year='.$year.'&semester='.$semester); 
+    }
+  } 
+  
+  
+  public function executeShowformtoregister(sfWebRequest $request)
+  {
+  		## Also show filter form 
+  		$this->registrationFilterForm = new FilterForm();
+  		## Get request parameters 
+		$programId			= $request->getParameter('programId');  
+      $academicYear		= $this->getUser()->getAttribute('academicYear');
+      $this->getUser()->setAttribute('academicYear', NULL );
+		$semester			= $request->getParameter('semester');
+		$year					= $request->getParameter('year');
+				 	
+		## One Batch is combination of: program_id, academic_year, year, and semester
+		if(Doctrine_Core::getTable('EnrollmentInfo')->getOneBatchEnrollments($programId, $academicYear, $year, $semester)->count() == 0)
+		{
+			$this->getUser()->setFlash('error', 'This batch does not exist');
+			$this->redirect('student/showregistrationfilterform');
+		}
+		/*if(Doctrine_Core::getTable('EnrollmentInfo')->getOneBatchNotRegisteredEnrollments($programId, $academicYear, $year, $semester)->count() == 0)
+		{
+			$this->getUser()->setFlash('error', 'This batch is already Registered');
+			$this->redirect('student/showregistrationfilterform');
+		}	
+		*/ 	
+      if(Doctrine_Core::getTable('EnrollmentInfo')->countNumberOfRegistrations($programId, $academicYear, $year, $semester) == 0)
+		{
+			$this->getUser()->setFlash('error', 'This batch is already Registered');
+			$this->redirect('student/showregistrationfilterform');
+		}			
+		$enrollments		= Doctrine_Core::getTable('EnrollmentInfo')->getOneBatchNotRegisteredEnrollments($programId, $academicYear, $year, $semester);
+		$is_enrolled = false; 
+		foreach($enrollments as $enrollment)
+		{
+			$enrollmentInfoIds[$enrollment->getId()]	= $enrollment->getStudent();
+			if($enrollment->getSectionId() != 0 )
+				$is_enrolled = TRUE;  			
+		}	
+		## Check if Batch is enrolled to A given program SECTION !! 
+		if(!$is_enrolled)
+		{
+	  		$this->getUser()->setFlash('error', 'Enroll students First!');
+	  		$this->redirect('programsection/index');		
+		}			
+		if(Doctrine_Core::getTable('SectionCourseOffering')->getOneBatchOneSemesterCourses($enrollment->getSectionId())->count() == 0)
+		{
+	  		$this->getUser()->setFlash('error', 'Course was not defined for this batch');
+	  		$this->redirect('student/showregistrationfilterform');
+	  	}	  			
+		$coursesToOffer 	= Doctrine_Core::getTable('SectionCourseOffering')->getOneBatchOneSemesterCourses($enrollment->getSectionId());
+		foreach($coursesToOffer as $course)
+		{
+			$courseIds[$course->getCourseId()] 	= $course->getCourse();
+		}    
+      ## Store $studentIds and $courseIds on session
+                
+    	$this->registrationForm = new CourseRegistrationForm($enrollmentInfoIds, $courseIds); 
+            
+  }
+  public function executeRegistration(sfWebRequest $request)
+  {
+    $this->registrationForm = new CourseRegistrationForm(); 
+	 $this->processRegistration($request, $this->registrationForm);
+	 $this->setTemplate('registration');    
+  }  
+ 
+  public function processRegistration(sfWebRequest $request, sfForm $registrationForm )
+  {    
+    $registrationForm->bind($request->getParameter('courseregistrationform'));
+    if ($registrationForm->isValid())
+    {
+		## get form values 	   
+	   $formData					= $this->registrationForm->getValues();  
+	   $courseIds					= $formData['course_id'];
+	   $enrollmentInfoIds		= $formData['student_id'];
+	   
+	   foreach( $enrollmentInfoIds as $enrollmentId )
+	   {
+	   	Doctrine_Core::getTable('EnrollmentInfo')->setSemesterActionToRegistered($enrollmentId);
+		   $registration	= new Registration();
+		   $registration->setEnrollmentInfoId($enrollmentId);
+		   $registration->setDate(date('m-d-Y'));
+		   $registration->save(); 	   	
+		   foreach($courseIds as $courseId)
+		   {
+		   	$studentCourse	= new StudentCourseGrade();
+		   	$studentCourse->setCourseId($courseId);
+		   	$studentCourse->setRegistrationId($registration->getId());
+		   	$studentCourse->setStudentId(Doctrine_Core::getTable('EnrollmentInfo')->getEnrollmentDetailById($enrollmentId)->getStudentId());
+		   	$studentCourse->save();
+		   }
+	   }
+  		$this->getUser()->setFlash('notice', 'Registration was successfull');
+  		$this->redirect('student/showregistrationfilterform');
+  		## Check filter combination availability [program_id, academic_year, year, semester], then return section]   
+
+    }
+  }      
+   
+  
+}

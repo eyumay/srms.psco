@@ -1,0 +1,81 @@
+Program:
+  it_program_extension:
+    Department: information_technology
+    ProgramType: BSC
+    EnrollmentType: extension
+    name: Information Technology Extension     
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12
+  it_program_distance:
+    Department: information_technology
+    ProgramType: BSC
+    EnrollmentType: distance
+    name: Information Technology Distance     
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12  
+  accounting_program_extension:
+    Department: accounting
+    ProgramType: BA
+    EnrollmentType: extension
+    name: Accounting and Public Finance Extension   
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12 
+  accounting_program_distance:
+    Department: accounting
+    ProgramType: BA
+    EnrollmentType: distance
+    name: Accounting and Public Finance Distance
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12    
+  hrm_program_extension:
+    Department: human_resource_management
+    ProgramType: BA
+    EnrollmentType: extension
+    name: Human Resource Mangement and Leadership Extension  
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12 
+  hrm_program_distance:
+    Department: human_resource_management
+    ProgramType: BA
+    EnrollmentType: distance
+    name: Human Resource Management and Leadership Distance
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12   
+  abm_program_extension:
+    Department: abm
+    ProgramType: BA
+    EnrollmentType: extension
+    name: Agricultural Business Management Extension  
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12 
+  abm_program_distance:
+    Department: abm
+    ProgramType: BA
+    EnrollmentType: distance
+    name: Agricultural Business Management Distance
+    status: 1
+    number_of_semester: 8
+    total_max_chr: 146
+    total_min_chr: 140
+    approval_date: 2012-04-04 12:12:12        

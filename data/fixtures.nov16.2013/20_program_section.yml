@@ -1,0 +1,110 @@
+ProgramSection:
+  program_section_accounting_extension_1:
+    Program: accounting_program_extension
+    Center: ziway
+    AcademicCalendar: first_year_calendar
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0 
+    
+  program_section_accounting_extension_2:
+    Program: accounting_program_extension
+    Center: ziway
+    AcademicCalendar: first_year_calendar
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0    
+
+  program_section_accounting_regular_1:
+    Program: accounting_program_regular
+    Center: ziway
+    AcademicCalendar: first_year_calendar
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0 
+    
+  program_section_accounting_regular_2:
+    Program: accounting_program_regular
+    Center: ziway
+    AcademicCalendar: first_year_calendar
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0       
+
+  program_section_accounting_distance_1:
+    Program: accounting_program_distance
+    Center: ambo
+    AcademicCalendar: first_year_calendar
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0 
+    
+  program_section_accounting_distance_2:
+    Program: accounting_program_distance
+    Center: ambo
+    AcademicCalendar: first_year_calendar
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0   \
+        
+  program_section_accounting_distance_3:
+    Program: accounting_program_distance
+    Center: sebeta
+    AcademicCalendar: first_year_calendar
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0 
+    
+  program_section_accounting_distance_4:
+    Program: accounting_program_distance
+    Center: sebeta
+    AcademicCalendar: first_year_calendar
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0  
+    
+  program_section_accounting_weekend_1:
+    Program: accounting_program_weekend
+    Center: woliso
+    AcademicCalendar: first_year_calendar
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0 
+    
+  program_section_accounting_weekend_2:
+    Program: accounting_program_weekend
+    Center: woliso
+    AcademicCalendar: first_year_calendar
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    section_number: 1
+    is_activated: 1
+    is_promoted: 0        

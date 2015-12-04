@@ -1,0 +1,304 @@
+<?php
+
+/**
+ * programsection actions.
+ *
+ * @package    srmsnew
+ * @subpackage programsection
+ * @author     EyuelG
+ * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ */
+class programsectionActions extends sfActions
+{
+  public function executeIndex(sfWebRequest $request)
+  {
+    /*
+    $this->program_sections = Doctrine_Core::getTable('ProgramSection')
+      ->createQuery('a')
+      ->execute();
+    */ 
+    ## Pass Program infomation 
+    $this->programs			= Doctrine_Core::getTable('Program')->getAllPrograms(); 
+    $this->centers 			= Doctrine_Core::getTable('Center')->getAllCenters();
+    $this->years				= FormChoices::getYearChoices();
+    $this->academicYears	= FormChoices::getAcademicYear();
+    $this->semesters			= FormChoices::getSemesterChoices();
+     
+  }
+
+  public function executeShow(sfWebRequest $request)
+  {
+    $this->program_section = Doctrine_Core::getTable('ProgramSection')->find(array($request->getParameter('id')));
+    $this->forward404Unless($this->program_section);
+  }
+
+  public function executeNew(sfWebRequest $request)
+  {
+    $this->form = new ProgramSectionForm();
+  }
+
+  public function executeCreate(sfWebRequest $request)
+  {
+  
+    $this->forward404Unless($request->isMethod(sfRequest::POST));
+
+    $this->form = new ProgramSectionForm();
+	 /* 
+    $this->processForm($request, $this->form);
+
+    $this->setTemplate('new');
+    */
+    
+    if($this->processForm($request, $this->form))
+    {
+        $this->getUser()->setFlash('notice', 'A Section for Program has been successfully created');
+        $this->redirect('student/index');
+    } 
+	 else 
+	 {
+        $this->getUser()->setFlash('error', 'Error in form');
+        $this->setTemplate('new'); // don't render createSuccess.php, but newSuccess.php
+    }
+    //$this->setTemplate('new');     
+  }
+
+  public function executeEdit(sfWebRequest $request)
+  {
+    $this->forward404Unless($program_section = Doctrine_Core::getTable('ProgramSection')->find(array($request->getParameter('id'))), sprintf('Object program_section does not exist (%s).', $request->getParameter('id')));
+    $this->form = new ProgramSectionForm($program_section);
+  }
+
+  public function executeUpdate(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
+    $this->forward404Unless($program_section = Doctrine_Core::getTable('ProgramSection')->find(array($request->getParameter('id'))), sprintf('Object program_section does not exist (%s).', $request->getParameter('id')));
+    $this->form = new ProgramSectionForm($program_section);
+
+    $this->processForm($request, $this->form);
+
+    $this->setTemplate('edit');
+  }
+
+  public function executeDelete(sfWebRequest $request)
+  {
+    $request->checkCSRFProtection();
+
+    $this->forward404Unless($program_section = Doctrine_Core::getTable('ProgramSection')->find(array($request->getParameter('id'))), sprintf('Object program_section does not exist (%s).', $request->getParameter('id')));
+    $program_section->delete();
+
+    $this->redirect('programsection/index');
+  }
+
+  protected function processForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    /*
+    if ($form->isValid())
+    {
+      $program_section = $form->save();
+
+      $this->redirect('programsection/edit?id='.$program_section->getId());
+    }
+    */ 
+    if ($form->isValid())
+    {
+      $program_section  = $form->save();
+      return true;
+    }
+    else{
+    	return false;  
+    }    
+  }
+  public function executeFilter(sfWebRequest $request) 
+  {
+  	 ## Data from filter form
+    $studentUid			= $request->getParameter('student_uid');
+    $year					= $request->getParameter('year');
+    $semester				= $request->getParameter('semester');
+    $academicYear			= $request->getParameter('academic_year');
+    $programId				= $request->getParameter('program_id');
+    $centerId				= $request->getParameter('center_id');
+    $this->program_id	= $request->getParameter('program_id'); ##  
+  
+  
+    ## Data to redisplay the filter, later to be binded to the form 
+    $this->programs = Doctrine_Core::getTable('Program')->getAllPrograms(); 
+    $this->centers = Doctrine_Core::getTable('Center')->getAllCenters();
+    $this->years  = FormChoices::getYearChoices();
+    $this->academicYears  = FormChoices::getAcademicYear();
+    $this->semesters  = FormChoices::getSemesterChoices();  
+    
+    	 
+    ## Process filtering,
+ 	 if ($year == 0 || $semester == 0 || $programId == 0 || $academicYear == 0 || $centerId == 0) ## All fields are required
+ 	 { 
+    	$this->getUser()->setFlash('error', "All filters should be selected");
+    	$this->redirect('programsection/index');
+    }
+    else {
+ 	    ########## taken
+ 	    ## Now get Section Id fot this batch( programId, academicYear, Year, Semester) 
+ 	    $oneSectionDetail = Doctrine_Core::getTable('ProgramSection')->getBatchSection($programId, $academicYear, $year, $semester ); 
+       	  	    
+ 	    //$this->getUser()->setAttribute('program_id', $programId);
+ 	    ## Also filter form has been submitted	
+	    $this->enrollments = Doctrine_Core::getTable('EnrollmentInfo')
+		        ->createQuery('a');  
+		 //$this->enrollments = Doctrine_Core::getTable('Center')
+		   //     ->createQuery('b');		        	            
+	    if ($year != 0 ) {
+	      $this->enrollments->andWhere('a.year = ?', $year);
+	    }
+	    if ($semester != 0 ) {
+	      $this->enrollments->andWhere('a.semester = ?', $semester);
+	    } 
+	    if ($academicYear != 0 ) {
+	      $this->enrollments->andWhere('a.academic_year = ?', $academicYear);
+	    }       
+	    if ($programId != 0 ) {
+	      $this->enrollments->andWhere('a.program_id = ?', $programId);
+	      $this->enrollments->andWhere('a.section_id = ?', 0); ##### Filter only NOT ENROLLED STUDENTS 
+ 
+	      
+	    }    	    
+	    if($this->enrollments->count() == 0)## If true, search has returned some value 
+	    {
+	    	$this->getUser()->setFlash('error', "No enrollments with given criteria!");
+	    	$this->redirect('programsection/index');	
+	    }
+	    else {
+	      $enrollmentInfoIds = array(); 
+	    	$this->enrollments = $this->enrollments->execute();
+	    	## create array of enrolled students, to later on update their section information 
+		   foreach( $this->enrollments as $enrollment )
+			{
+				$enrollmentInfoIds[$enrollment->getId()] = $enrollment->getStudent(); 
+			}	
+			$this->getUser()->setAttribute('enrollmentInfoIds', $enrollmentInfoIds );
+		   foreach( $oneSectionDetail as $section )
+			{
+				$sectionIds[$section->getId()] = 'Default Section'.$section->getSectionNumber(); 
+			}				
+			$this->getUser()->setAttribute('sectionIds', $sectionIds ); 
+			## create and pass forms here! 
+			$this->studentsToEnroll = new StudentToSectionEnrollmentForm($enrollmentInfoIds, $sectionIds); 			   	
+       }  
+    } 
+  } 
+  /**
+  public function executeEnrolltosection(sfWebRequest $request) 
+  { 
+	  
+	     
+     ## Find section number from form    
+     $sectionId			= $request->getParameter('section_id');
+     //$this->redirect('programsection/index?section_id='.$sectionId);
+     ## Assign students to this section
+	  Doctrine_Core::getTable('EnrollmentInfo')
+	      ->enrollStudentsToSection($this->getUser()->getAttribute('enrollmentInfoIds'), $sectionId);
+	  $this->getUser()->setFlash('notice', 'Successfully Enrolled Students to Section');
+	  $this->redirect('programsection/index');
+
+     
+     ## Data to redisplay the filter, later to be binded to the form 
+     $this->programs = Doctrine_Core::getTable('Program')->getAllPrograms(); 
+     $this->years  = FormChoices::getYearChoices();
+     $this->academicYears  = FormChoices::getAcademicYear();
+     $this->semesters  = FormChoices::getSemesterChoices(); 
+    	  
+
+  }
+  */ 
+  public function executeEnrolltosection(sfWebRequest $request) 
+  { 
+    
+    ## Data to redisplay the filter, later to be binded to the form 
+    $this->programs				= Doctrine_Core::getTable('Program')->getAllPrograms(); 
+    $this->years					= FormChoices::getYearChoices();
+    $this->academicYears		= FormChoices::getAcademicYear();
+    $this->semesters				= FormChoices::getSemesterChoices();
+    ## Retrieve $enrollmentInfoIds and $sectionIds from session variable, and delete it 
+    $enrollmentInfoIds			= $this->getUser()->getAttribute('enrollmentInfoIds');
+    $sectionIds					= $this->getUser()->getAttribute('sectionIds');
+    //var_dump($sectionIds);
+	 $this->studentsToEnroll	= new StudentToSectionEnrollmentForm($enrollmentInfoIds, $sectionIds);  
+	 if($this->processEnrolltosectionform($request, $this->studentsToEnroll))
+	 {
+	 	## do saving form here ...
+		 $this->getUser()->setFlash('notice', 'perfecto');		 
+		 $this->setTemplate('enrolltosection');	 	
+	 }
+	 $this->getUser()->setFlash('error', 'No selected student to enroll to section ');
+	 $this->setTemplate('enrolltosection');
+  }   
+  public function processEnrolltosectionform(sfWebRequest $request, sfForm $studentsToEnroll )
+  {
+
+    $studentsToEnroll->bind($request->getParameter('studenttosectionenrollmentform'));    
+    if ($studentsToEnroll->isValid())
+    {
+     	  $formData					= $this->studentsToEnroll->getValues();    
+ 	     $enrollmentInfoId		= $formData['enrollment_info_id'];
+ 	     $sectionId				= $formData['section_id'];
+
+ 	      
+        if($enrollmentInfoId == '' ) { 	    
+          return false;
+        }
+        ## Otherwise do form submission with selected values
+		  if(!Doctrine_Core::getTable('EnrollmentInfo')->enrollStudentsToSection($enrollmentInfoId, $sectionId))
+		  {
+			  $this->getUser()->setFlash('error', 'Failed to perform requested action');
+			  $this->redirect('programsection/index');		  	
+		  }	
+		  $this->getUser()->setFlash('notice', 'Successfully Enrolled Students to Section');
+		  $this->redirect('programsection/index');          
+	    return true;  		 
+    }
+
+    return false; 
+  }   
+ 
+  
+  
+########### START: Enroll Selected Students to Selected OR Any Program Section  #######################  
+  public function executeShowfiltertoenrollselected(sfWebRequest $request) 
+  { 
+    $this->filterToEnrollSelectedFormFilter = new FilterForm();
+  } 
+  
+  public function executeShowfiltertoenrollselectedresult(sfWebRequest $request) 
+  { 
+    $this->filterToEnrollSelectedFormFilter = new FilterForm();
+	 $this->processShowfiltertoenrollselectedresultform($request, $this->filterToEnrollSelectedFormFilter);
+	 $this->setTemplate('showfiltertoenrollselected');     
+  }   
+  public function processShowfiltertoenrollselectedresultform(sfWebRequest $request, sfForm $filterToEnrollSelectedFormFilter )
+  {    
+    $filterToEnrollSelectedFormFilter->bind($request->getParameter('filterform'));
+    if ($filterToEnrollSelectedFormFilter->isValid())
+    {
+		## get form values 	   
+	   $formData		= $this->filterToEnrollSelectedFormFilter->getValues();  
+	   $programId		= $formData['program_id'];
+		$academicYear	= $formData['academic_year'];
+		## passing $academicYear creates a problem on URL, so pass it using session 
+		$this->getUser()->setAttribute('academicYear', $academicYear);
+		$year				= $formData['year'];
+		$semester		= $formData['semester'];
+     		 
+		$this->redirect('programsection/showformtoselectandenroll?programId='.$programId.'&year='.$year.'&semester='.$semester); 
+    }
+  }   
+  public function executeShowformtoselectandenroll(sfWebRequest $request)
+  {
+    $this->filterToEnrollSelectedFormFilter = new FilterForm();
+  } 
+  public function executeDoenrollselectedtosection(sfWebRequest $request)
+  {
+    $this->filterToEnrollSelectedFormFilter = new FilterForm();
+  }      
+########### END: Enroll Selected Students to Selected OR Any Program Section  #######################    
+
+       
+}

@@ -1,0 +1,26 @@
+Student:
+<?php for($i = 101; $i <= 150; $i++): ?>
+  student_<?php echo $i ?>:
+    student_uid: <?php echo substr(mt_rand(), 0, 4)."/".substr('2010', 2, 4)."\n"; ?>
+    name: <?php echo "N" . $i ."\n" ?>
+    fathers_name: <?php echo "F" . $i ."\n" ?>
+    grandfathers_name: <?php echo "G" . $i ."\n" ?>
+    mother_name: <?php echo "M" . $i ."\n" ?>
+    date_of_birth: 1995-12-31
+    admission_year: 2010
+    sex: 1
+    nationality: Ethiopian
+<?php endfor; ?>
+
+<?php for($i = 151; $i <= 200; $i++): ?>
+  student_<?php echo $i ?>:
+    student_uid: <?php echo substr(mt_rand(), 0, 4)."/".substr('2011', 2, 4)."\n"; ?>
+    name: <?php echo "N" . $i ."\n" ?>
+    fathers_name: <?php echo "F" . $i ."\n" ?>
+    grandfathers_name: <?php echo "G" . $i ."\n" ?>
+    mother_name: <?php echo "M" . $i ."\n" ?>
+    date_of_birth: 1995-12-31
+    admission_year: 2011
+    sex: 1
+    nationality: Ethiopian
+<?php endfor; ?>

@@ -1,0 +1,42 @@
+StudentCenter:
+<?php for ($i = 101; $i <= 110; $i++): ?>
+  student_center_<?php echo $i ?>:
+    Center: ambo  
+    Student: student_<?php echo $i."\n" ; ?>
+<?php endfor; ?>
+
+<?php for ($i = 111; $i <= 120; $i++): ?>
+  student_center_<?php echo $i ?>:
+    Center: ambo  
+    Student: student_<?php echo $i."\n" ; ?>
+<?php endfor; ?>
+
+<?php for ($i = 121; $i <= 130; $i++): ?>
+  student_center_<?php echo $i ?>:
+    Center: sebeta  
+    Student: student_<?php echo $i."\n" ; ?>
+<?php endfor; ?>
+
+<?php for ($i = 131; $i <= 140; $i++): ?>
+  student_center_<?php echo $i ?>:
+    Center: sebeta  
+    Student: student_<?php echo $i."\n" ; ?>
+<?php endfor; ?>
+
+<?php for ($i = 141; $i <= 150; $i++): ?>
+  student_center_<?php echo $i ?>:
+    Center: woliso  
+    Student: student_<?php echo $i."\n" ; ?>
+<?php endfor; ?>
+
+<?php for ($i = 151; $i <= 160; $i++): ?>
+  student_center_<?php echo $i ?>:
+    Center: woliso  
+    Student: student_<?php echo $i."\n" ; ?>
+<?php endfor; ?>
+
+<?php for ($i = 161; $i <= 200; $i++): ?>
+  student_center_<?php echo $i ?>:
+    Center: ziway  
+    Student: student_<?php echo $i."\n" ; ?>
+<?php endfor; ?>

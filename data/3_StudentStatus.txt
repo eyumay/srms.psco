@@ -1,0 +1,80 @@
+###########
+## Preconditions
+-> A Student must have atleast SGPA, 
+
+Code
+CGPA- Cumulative GPA
+SGPA- Semester GPA
+ADR - Academic Dismissal with Readmission
+AD  - Academic Dismissal
+W   - Withdrawal
+DO  - Dropout
+Warning
+Passing
+
+## Methods to implement rules
+Academic Dismissal
+checkIfAcademicDismissal($studentEnrollment)
+    1. checkIfCurrentSemesterIsAD($studentEnrollment)
+    2. checkLastTwoSemestersSGPAForAD($studentEnrollment)
+
+Academic Dismissal with Readmission
+checkIfAcademicDismissalWithReadmission($year, $semester, $sgpa, $cgpa)
+
+Warning
+checkIfWarning($year, $semester, $sgpa, $cgpa, $studentId)
+    1. checkCurrentSemesterIfWarning($year, $semester, $sgpa_current, $cgpa)
+    2. checkIfWarningIsForFirstTime($studentId)
+
+## Pass conditions
+Year-1, Semester-1
+	SGPA >= 1.75
+Year-1, Semester-2
+	CGPA >= 2.00
+
+## Warning conditions
+Year-1, Semester-1
+	SGPA >= 1.25 && SGPA < 1.75
+Year-2, Semester-1 or following semesters (4, 5, 6 ....)
+	SGPA<1 for the first time
+
+
+## Academic Dismissal
+Year-1,Semester-1
+	SGPA < 1.25
+Year-1, Semester-2
+	CGPA < 1.75
+Year-2, Semester-1 (any 3rd semester and following )
+	CGPA < 2.00
+Year-2, Semester-1 and following any consecutive semesters)
+	SGPA < 1.00
+
+
+## Academic Dismissal with Readmission
+Year-1, Semester-1
+	SGPA >= 1.00
+Year-1, Semester-2
+	CGPA >= 1.50
+Year-2, Semester-1
+	CGPA >= 1.67 
+Year-2, Semester-2
+	CGPA >= 1.75
+Year-3, Semester-1  && Year-3, Semester-2
+	CGPA >= 1.80
+Year-4, Semester-1 && Year-4, Semester-2
+	CGPA >= 1.85
+Year-5, Semester-1 && Year-5, Semester-2
+	CGPA >= 1.90
+Year-6, Semester-1 && Year-6, Semester-2
+	CGPA >= 1.92
+**How many times can student be readmitted?
+
+## Distinction
+CGPA >= 3.75
+	Very Great Distinction
+CGPA >= 3.5 && CGPA <= 3.74
+	Great Distinction
+CGPA >= 3.25 &&  CGPA >=3.49
+	Distinction
+
+

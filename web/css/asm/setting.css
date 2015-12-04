@@ -1,0 +1,146 @@
+/* 
+    Document   : setting
+    Created on : Feb 21, 2013, 12:12:00 AM
+    Author     : Asmie
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#sgpa_fieldset{
+    float: left;
+    /*margin-left: 40px;  */
+    /*width: 400px;*/
+}
+#tgpa_fieldset{
+    float: left;
+    /* margin-left: 40px;*/
+    /*    width: 350px;*/
+}
+#nf_fieldset{
+    /*margin-left: 40px; */
+    float: left;
+    /*width: 400px;*/
+}
+#cr_fieldset{
+    /*margin-left: 40px; */
+    float: left;
+    /*width: 400px;*/
+}
+#nf_legend{
+    font-size: 14px; 
+    /*width:120px;*/ 
+    border: none;
+    padding-top: 20px;
+    /*margin: 0px auto*/
+}
+input[type="text"]{
+    width: 120px
+}
+#tgpa_legend{
+    font-size: 14px; 
+    padding-top: 20px;
+    border: none;
+    /*margin: 0px auto*/
+}
+#sgpa_legend{
+    font-size: 14px; 
+    border: none;
+    padding-top: 20px;
+    /*margin: 0px auto*/
+}
+#cr_legend{
+    font-size: 14px; 
+    border: none;
+    padding-top: 20px;
+    /*margin: 0px auto*/
+}
+#other_legend{
+    font-size: 14px; 
+    border: none;
+    padding-top: 20px;
+
+}
+#sgpa_fieldset, #tgpa_fieldset, #nf_fieldset, #cr_fieldset { 
+    border-top-width: 1px;
+    border-style:inset;
+    /*margin: 5px;*/
+    background-color: #efefef;
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#other_fieldset{
+    border-top-width: 1px;
+    border-style:inset;
+    /*margin: 5px;*/
+    background-color: #efefef;
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+
+    clear: both;
+
+}
+#sgpa_fieldset{
+    margin-left: auto;
+    margin-right: auto;
+}
+.outer{
+    float:left;
+    /*margin: 0 auto;*/
+
+    background-color: #dddddd;
+    text-align: center;
+    margin: 0 auto;
+    width: 330px;
+    padding: 10px 10px 10px 10px;
+    /*    margin-left: auto;
+        margin-right: auto;*/
+    display: inline-block;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #ccc;
+    /*width: 380px;*/
+    /*max-width: 960px;*/
+    border-radius: 5px;
+    color: #666;
+    font-weight: bold;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    margin: 10px;
+    margin-right: 20px; 
+
+
+
+}
+tr th{
+    text-align: left;
+    font-size: 14px;
+}
+table{
+    /*width: 400ps;
+    margin-left: 40px*/
+}
+#container2{
+    width: 800px;
+    margin: 0 auto;
+} 
+#promotion_setting_college_id{
+    width: 300px
+}
+#promotion_setting_department_id{
+    width: 300px
+
+}
+#promotion_setting_program_id{
+    width: 300px
+
+}
+#promotion_setting_year{
+    width: 100px
+}
+#promotion_setting_pstatus{
+    width: 100px
+}
+#promotion_setting_semester{
+    width: 100px
+}

@@ -1,0 +1,63 @@
+status_setting
+- sgpa
+- cgpa
+- year
+- semester
+- status
+
+ad_setting
+compare	point	Year	Semester	gpa_type	Status	
+<	1.25	1	1		sgpa		AD
+<	1.75	1	2		cgpa		AD
+<	2.00	2	1		cgpa		AD
+<	2.00	2	2		cgpa		AD
+<	2.00	3	1		cgpa		AD
+<	2.00	3	2		cgpa		AD
+<	2.00	4	1		cgpa		AD
+<	2.00	4	2		cgpa		AD
+<	2.00	5	1		cgpa		AD
+<	2.00	5	2		cgpa		AD
+<	2.00	6	1		cgpa		AD
+<	2.00	6	2		cgpa		AD
+
+adr_setting
+compare	point	Year	Semester	gpa_type	Status	
+>=	1.00	1	1		sgpa		ADR
+>=	1.50	1	2		cgpa		ADR
+>=	1.67	2	1		cgpa		ADR
+>=	1.75	2	2		cgpa		ADR
+>=	1.80	3	1		cgpa		ADR
+>=	1.80	3	2		cgpa		ADR
+>=	1.85	4	1		cgpa		ADR
+>=	1.85	4	2		cgpa		ADR
+>=	1.90	5	1		cgpa		ADR
+>=	1.90	5	2		cgpa		ADR
+>=	1.92	6	1		cgpa		ADR
+>=	1.92	6	2		cgpa		ADR
+
+warning_setting
+compare	point	Year	Semester	gpa_type	Status	
+>=	1.00	1	1		sgpa		Warning
+<	1.75	1	1		sgpa		Warning
+<	1.00	2	1		cgpa		Warning
+<	1.00	2	2		cgpa		Warning
+<	1.00	3	1		cgpa		Warning
+<	1.00	3	2		cgpa		Warning
+<	1.00	4	1		cgpa		Warning
+<	1.00	4	2		cgpa		Warning
+<	1.00	5	1		cgpa		Warning
+<	1.00	5	2		cgpa		Warning
+<	1.00	6	1		cgpa		Warning
+<	1.00	6	2		cgpa		Warning	
+
+student_academic_status
+
+
+
+
+
+
+
+
+
+

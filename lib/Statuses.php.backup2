@@ -1,0 +1,368 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of StudentStatus
+ *
+ * @author eyumay
+
+Class Statuses 
+{   
+    static public function getStudentStatus($studentEnrollment )            
+    {
+        if(SemesterActions::getSemesterAction($studentEnrollment) == 'Admitted')
+        {
+            return 'Cannot determine status'; 
+        }
+        if(!Doctrine_Core::getTable('SectionCourseOffering')->checkIfGradeSubmittedBySectionId($studentEnrollment->getSectionId()))
+            return 'Cannot determine status';
+        
+        if(Statuses::checkIfAcademicDismissal($studentEnrollment))
+        {
+            if(Statuses::checkIfAcademicDismissalWithReadmission($studentEnrollment))
+            {
+                return "ADR";
+            }
+            else
+            {
+                return "AD";
+            }
+        } 
+        
+        if(Statuses::checkIfWarning($studentEnrollment))
+        {
+            return "WARNING";
+        }
+        
+        if(Statuses::checkIfPass($studentEnrollment))
+        {
+            return "PASS"; 
+        }
+
+    }
+    
+    ####################################################################
+    static public function checkIfAcademicDismissal( $studentEnrollment )
+    {
+        if(Statuses::checkIfCurrentSemesterIsAD($studentEnrollment))
+            return TRUE;
+        elseif(Statuses::checkLastTwoSemestersSGPAForAD($studentEnrollment))
+            return TRUE;
+        else 
+            return FALSE;
+    }
+    static public function checkIfCurrentSemesterIsAD( $studentEnrollment )
+    {
+          $yOneSoneMax      = 1.25;
+          $yOneStwoMax      = 1.75;
+          $yearOneAbove     = 2.00;
+          
+          $year             = $studentEnrollment->getYear();
+          $semester         = $studentEnrollment->getSemester();
+          //$sgpa             = round($studentEnrollment->getSemesterGradePoints()/$studentEnrollment->getSemesterChrs(), 2);
+          //$cgpa             = round($studentEnrollment->getTotalGradePoints()/$studentEnrollment->getTotalChrs(), 2);
+          $sgpa             = $studentEnrollment->getSGPA();
+          $cgpa             = $studentEnrollment->getCGPA();
+          
+          if($year == 1 && $semester == 1)
+          {
+            if($sgpa < $yOneSoneMax )
+                return TRUE;
+            else
+                return FALSE; 
+          }
+
+          elseif($year == 1 && $semester == 2)
+          {
+            if($sgpa < $yOneStwoMax )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 2 && $semester == 1)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 2 && $semester == 2)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 3 && $semester == 1)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 3 && $semester == 2)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 4 && $semester == 1)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 4 && $semester == 2)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 5 && $semester == 1)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 5 && $semester == 2)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 6 && $semester == 1)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          elseif($year == 6 && $semester == 2)
+          {
+            if($cgpa < $yearOneAbove )
+                return TRUE;
+            else
+                return FALSE;
+          }
+          else
+              return FALSE;
+    }
+
+    static public function checkLastTwoSemestersSGPAForAD($studentEnrollment)
+    {
+        ## check if Last two semesters are okay, i.e, less than allowed point, current semester and previous semester,
+        ## If student's previous_chr AND previous_grade_points are 0, student is having first time enrollment,
+        
+        $lastTwoSemestersMaxPoint = 1.00; 
+        
+        if($studentEnrollment->getPreviousChrs() != 0 && $studentEnrollment->getPreviousGradePoints() != 0)
+        {
+          $sgpaPrevious = round($studentEnrollment->getPreviousSGPA(), 2);
+          $sgpaCurrent = round($studentEnrollment->getSGPA(), 2);
+          
+          if($sgpaCurrent < $lastTwoSemestersMaxPoint && $sgpaPrevious < $lastTwoSemestersMaxPoint)
+              return TRUE;
+          else
+              return FALSE;          
+        }
+        else
+            return FALSE; 
+            
+        
+    }    
+    
+    
+    static public function checkIfAcademicDismissalWithReadmission($studentEnrollment)
+    {
+        $yOneSoneMax    = 1.00;        
+        $yOneStwoMax    = 1.50;
+        $yTwoSoneMax    = 1.67;
+        $yTwoStwoMax    = 1.75;
+        $yThreeMax      = 1.80;      
+        $yFourMax       = 1.85;         
+        $yFiveMax       = 1.90;
+        $ySixMax        = 1.92; 
+        
+        
+        $year           = $studentEnrollment->getYear();
+        $semester       = $studentEnrollment->getSemester();
+        $sgpa           = $studentEnrollment->getSGPA();
+        $cgpa           = $studentEnrollment->getCGPA();
+          
+        if($year == 1 && $semester == 1)
+        {
+          if($sgpa >= $yOneSoneMax )
+              return TRUE;
+          else
+              return FALSE; 
+        }
+        
+        if($year == 1 && $semester == 2)
+        {
+            if($cgpa >= $yOneStwoMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 2 && $semester == 1)
+        {
+            if($cgpa >= $yTwoSoneMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 2 && $semester == 2)
+        {
+            if($cgpa >= $yTwoStwoMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 3 && $semester == 1)
+        {
+            if($cgpa >= $yThreeMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 3 && $semester == 2)
+        {
+            if($cgpa >= $yThreeMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 4 && $semester == 1)
+        {
+            if($cgpa >= $yFourMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 4 && $semester == 2)
+        {
+            if($cgpa >= $yFourMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 5 && $semester == 1)
+        {
+            if($cgpa >= $yFiveMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 5 && $semester == 2)
+        {
+            if($cgpa >= $yFiveMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 6 && $semester == 1)
+        {
+            if($cgpa >= $ySixMax )
+                return TRUE;
+            else
+                return FALSE;
+        }
+        
+        if($year == 6 && $semester == 2)
+        {
+            if($cgpa >= $ySixMax )
+                return TRUE;
+            else
+                return FALSE;     
+        }
+    }
+    ############################################################################# END OF ACADEMIC DISMISSAL AND READMISSION RULES
+    
+    
+    
+    ###################### START WARINIGN CONDITIONS
+    static public function checkIfWarning($studentEnrollment)
+    {
+        $yOneSoneMax    = 1.75;
+        $yOneSoneMin    = 1.25;
+        $yOneAbove      = 1.00;
+        
+        $year           = $studentEnrollment->getYear();
+        $semester       = $studentEnrollment->getSemester();
+        $sgpa             = $studentEnrollment->getSGPA();
+        $cgpa             = $studentEnrollment->getCGPA();
+          
+        if($year == 1 && $semester == 1)
+        {
+          if($sgpa >= $yOneSoneMin && $sgpa < $yOneSoneMax )
+              return TRUE;
+          else
+              return FALSE; 
+        }
+        
+        ## TODO
+        # check if CGPA is pass, and SGPA falls below 1 for the first time.
+        
+        #if($year >= 2 )
+        #{
+
+        #} 
+
+    }
+    ################################################ END WARNING RULE
+    
+    ###################### START PASSING CONDITIONS
+    static public function checkIfPass($studentEnrollment)
+    {
+        $yOneSoneMax        = 1.75;
+        $yOneStwoAndAbove   = 2.00; 
+        
+        $year           = $studentEnrollment->getYear();
+        $semester       = $studentEnrollment->getSemester();
+        $sgpa             = $studentEnrollment->getSGPA();
+        $cgpa             = $studentEnrollment->getCGPA();
+          
+        if($year == 1 && $semester == 1)
+        {
+          if($sgpa >= $yOneSoneMax )
+              return TRUE;
+          else
+              return FALSE; 
+        }
+        
+        if($year == 1 && $semester == 2)
+        {
+          if($cgpa >= $yOneStwoAndAbove )
+              return TRUE;
+          else
+              return FALSE; 
+        }      
+        if($year >= 2)
+        {
+          if($cgpa >= $yOneStwoAndAbove )
+              return TRUE;
+          else
+              return FALSE; 
+        }           
+        
+    }    
+}
+*/

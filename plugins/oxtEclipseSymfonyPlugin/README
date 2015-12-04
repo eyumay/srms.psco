@@ -1,0 +1,20 @@
+# oxtEclipseSymfonyPlugin plugin #
+
+Allows to run symfony tasks from Eclipse Ant GUI.
+
+## Installation ##
+
+  * Install plugin
+
+		symfony plugin:install oxtEclipseSymfonyPlugin-1.0.0.tgz
+
+  * Clear cache
+
+    ./symfony cc
+
+  * Open Ant view in Eclipse – Window → Show View → Other... → select Ant
+
+  * In Ant view open symfony-build.xml in project root directory
+
+--
+Send your comments or questions to alex[remove this text]@o-x-t.com

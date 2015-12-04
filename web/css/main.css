@@ -1,0 +1,131 @@
+.cont {
+    width:100%;
+    background:#cccccc;
+
+    padding-top: -50px;
+
+
+}
+.second-container
+{
+        width:98%;
+       align:center;
+
+    }
+.menu {
+    
+    height:20px;
+    background-image: url("/images/menu_bg.png");
+    color:navy;
+    font-size:0.8em;
+    padding-top: 2px;
+    padding-left:80px;
+    padding-bottom:10px;
+    border-bottom:2px double #000000;
+}
+.menu p
+{
+       
+    padding-top: 0px;
+    padding-left:20px;
+    padding-bottom:1px;
+    }
+.banner
+{
+    width:100%;
+    background-image: url("srslogo.jpg"); 
+    background-color: #eeeeee;
+    padding-top: -10px;
+}
+
+.plink {
+    padding:5px;
+    float:right;
+    font-family:"Georgia";
+    font-size:20px;
+}
+.slider {
+    width:900px;
+    height:300px;
+    float:left;
+}
+a {
+    color:red;
+}
+a:hover {
+
+    color:0e24cb;
+   /* font-size:1.2em;*/
+}
+.leftlink {
+      width:19%;
+      float:left;
+      padding:5px;
+      height:auto;
+      background-color:#cccccc;
+}
+.mbody {
+    width:80%;
+    float:right;
+    color:navy;
+    font-size:10px;
+    background-color: #eeeeee;
+}
+
+
+.separater
+{
+    widht:1000px;
+    float:left;
+    background:000000;
+    height:10px;
+}
+.footer {
+    float:left;
+    background-image: url("/images/ft.png"); 
+    width:100%;
+    height:auto;
+    color:gray;
+    font-size:15px;
+    text-indent:70px;
+}
+.flash_notice
+{
+  margin: 3px 0;
+  padding: 7px;
+  background-color: #cfc;
+}
+
+.flash_error
+{
+  margin: 3px 0;
+  padding: 7px;
+  background-color: #f33;
+  color: #fff;
+}
+.radio_list label {
+  margin-right: 15px;
+}
+.radio_list li
+{
+  display: inline;
+}
+
+.mbody #dropaddcontainer {
+    width:800px;
+    background:#FFFFFF;
+    border-bottom: 1px solid #000000; 
+    border-left: 1px solid #000000;
+    margin-bottom: 20px; 
+}
+.mbody #dropaddcontainer #left {
+    width:500px;
+    padding:20px;
+    border-right: 1px solid #000000; 
+}
+.mbody #dropaddcontainer #right {
+    width:200px;
+    float:right;
+    position:relative;
+    padding:20px;
+}

@@ -1,0 +1,46 @@
+<?php 
+class FilterForm extends BaseForm
+{
+  /** 
+  private $studentIds = '';
+  private $courseIds='';
+
+  public function __construct($enrollmentInfoIds = NULL , $courseIds = NULL )
+  {
+    $this->enrollmentInfoIds = $enrollmentInfoIds;
+    $this->courseIds = $courseIds;
+    parent::__construct();
+  }  
+  */ 
+  
+  public function configure()
+  {
+    $this->setWidgets(array(
+    'program_id'		=>new sfWidgetFormDoctrineChoice(array(
+    						'model' => 'Program',
+    						'add_empty' => 'Select Program'
+    						)), 
+    'academic_year'	=>new sfWidgetFormChoice(array(
+    						'choices' => FormChoices::getAcademicYear(),
+    						)), 
+    'year'				=>new sfWidgetFormChoice(array(
+    						'choices' => FormChoices::getYearChoices()    						
+    						)),	 
+    'semester'			=>new sfWidgetFormChoice(array(
+    						'choices' => FormChoices::getSemesterChoices() 
+    						))    						
+    ));
+    
+    $this->widgetSchema->setLabels(array(
+    'program_id' => 'Program',
+    'academic_year' => 'Academic Year'
+    ));
+
+    $this->validatorSchema['program_id'] = new sfValidatorNumber();
+	 $this->validatorSchema['academic_year'] = new sfValidatorString();
+    $this->validatorSchema['year'] = new sfValidatorString();
+	 $this->validatorSchema['semester'] = new sfValidatorNumber(array( 'required' => true ));	 
+    
+    $this->widgetSchema->setNameFormat('filterform[%s]');
+  }
+} 

@@ -1,0 +1,55 @@
+<?php 
+class SectionCourseOfferingFilterForm extends BaseForm  
+{
+  public function configure()
+  { 
+ 
+    
+    $this->widgetSchema['course_id'] = new sfWidgetFormDoctrineChoice(array(
+            'multiple' => true,
+            'model' => 'Course',
+            'renderer_class' => 'sfWidgetFormSelectDoubleList',
+            'renderer_options' => array(
+                'associated_first' => false,
+                'label_unassociated' => 'All courses',
+                'label_associated' => 'Semester Courses'
+                )));
+    $this->setWidgets(array(
+    'program_id'		=>new sfWidgetFormDoctrineChoice(array(
+    						'model' => 'Program',
+    						'add_empty' => 'Select Program'
+    						)), 
+    'academic_year'	=>new sfWidgetFormChoice(array(
+    						'choices' => FormChoices::getAcademicYear(),
+    						)), 
+    'year'				=>new sfWidgetFormChoice(array(
+    						'choices' => FormChoices::getYearChoices()    						
+    						)),	 
+    'semester'			=>new sfWidgetFormChoice(array(
+    						'choices' => FormChoices::getSemesterChoices() 
+    						)),
+	 'course_id'		=> new sfWidgetFormDoctrineChoice(array(
+							            'multiple' => true,
+							            'model' => 'Course',
+							            'renderer_class' => 'sfWidgetFormSelectDoubleList',
+							            'renderer_options' => array(
+							                'associated_first' => false,
+							                'label_unassociated' => 'All courses',
+							                'label_associated' => 'Semester Courses'
+							                ))),     						    						
+    ));
+    
+    $this->widgetSchema->setLabels(array(
+    'program_id' => 'Program',
+    'academic_year' => 'Academic Year'
+    ));
+
+    $this->validatorSchema['program_id'] = new sfValidatorNumber(array( 'required' => true ));
+	 $this->validatorSchema['academic_year'] = new sfValidatorString(array( 'required' => true ));
+    $this->validatorSchema['year'] = new sfValidatorNumber(array( 'required' => true ));
+	 $this->validatorSchema['semester'] = new sfValidatorNumber(array( 'required' => true ));	                
+    $this->validatorSchema['course_id'] = new sfValidatorString();
+    
+    $this->widgetSchema->setNameFormat('filterform[%s]');												 
+  }
+}

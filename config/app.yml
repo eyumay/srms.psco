@@ -1,0 +1,35 @@
+## YAML Template.
+all:
+  normal_registration: 1
+  add_registration: 2
+  drop_registration: 3
+  makeup_registration: 4
+  reexam_registration: 5
+  grade_complain_registration: 6
+  exemption_registration: 7
+  admission_enrollment: 1
+  promotion_enrollment: 2
+  readmission_enrollment: 3
+  transfer_enrollment: 4
+  clearance_enrollment: 5
+  add_enrollment: 6
+  enrolled_semester_action: 0
+  registered_semester_action: 1
+  promoted_semester_action: 2
+  withdrawn_semester_action: 3
+  under_semester_action: 4
+  dismissed_semester_action: 5
+  dropout_semester_action: 6
+  transferred_semester_action: 7
+  graduated_semester_action: 8
+  grade_not_submitted: 0
+  grade_submitted: 1
+  no_statua: 0
+  ad_status: 1
+  adr_status: 2
+  warning_status: 3
+  passing_status: 4
+  probation_status: 5
+  dropout_status: 6
+  withdrawal_status: 7
+  

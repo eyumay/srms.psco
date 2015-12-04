@@ -1,0 +1,9 @@
+## YAML Template.
+SemesterType:
+  type_1:
+    name: normal
+  type_2: 
+    name: virtual
+  type_3:
+    name: summer
+

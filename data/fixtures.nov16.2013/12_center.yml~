@@ -1,0 +1,32 @@
+Center:
+  ambo:
+    name: Ambo 
+    description: Ambo Center 
+  sebeta:
+    name: Sebeta 
+    description: Ambo Center 
+  woliso:
+    name: Woliso 
+    description: Ambo Center 
+  ziway:
+    name: Ziway 
+    description: Ambo Center 
+  bishoftu:
+    name: Bishoftu 
+    description: Ambo Center         
+  meki:
+    name: Meki 
+    description: Ambo Center     
+  bako:
+    name: Bako 
+    description: Ambo Center  
+  neqemte:
+    name: Nekemte 
+    description: Ambo Center        
+  gimbi:
+    name: Gimbi 
+    description: Gimbi Center     
+  dembi_dollo:
+    name: Dembi Dollo 
+    description: Ambo Center     
+    

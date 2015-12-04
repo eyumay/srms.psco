@@ -1,0 +1,136 @@
+Grade:          
+  grade_a_plus:
+    GradeType: grade_type_lg
+    gradechar: A+ 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 4.0
+    max_value: 4.0
+    value: 4.0  
+  grade_a:
+    GradeType: grade_type_lg
+    gradechar: A 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 4.0
+    max_value: 4.0
+    value: 4.0     
+  grade_a_minus:
+    GradeType: grade_type_lg
+    gradechar: A- 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 3.75
+    max_value: 3.75
+    value: 3.75       
+  grade_b_plus:
+    GradeType: grade_type_lg
+    gradechar: B+ 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 3.5
+    max_value: 3.5
+    value: 3.5
+  grade_b:
+    GradeType: grade_type_lg
+    gradechar: B 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 3.0
+    max_value: 3.0
+    value: 3.0
+  grade_b_minus:
+    GradeType: grade_type_lg
+    gradechar: B- 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 2.75
+    max_value: 2.75
+    value: 2.75        
+  grade_c_plus:
+    GradeType: grade_type_lg
+    gradechar: C+ 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 2.5
+    max_value: 2.5
+    value: 2.5     
+  grade_c:
+    GradeType: grade_type_lg
+    gradechar: C 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 2
+    max_value: 2
+    value: 2
+  grade_c_minus:
+    GradeType: grade_type_lg
+    gradechar: C-
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 1.75
+    max_value: 1.75
+    value: 1.75
+  grade_d_plus:
+    GradeType: grade_type_lg
+    gradechar: D+ 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 1.5
+    max_value: 1.5
+    value: 1.5     
+  grade_d:
+    GradeType: grade_type_lg
+    gradechar: D 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 1
+    max_value: 1
+    value: 1
+  grade_d_minus:
+    GradeType: grade_type_lg
+    gradechar: D- 
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 0.75
+    max_value: 0.75
+    value: 0.75
+  grade_f:
+    GradeType: grade_type_lg
+    gradechar: F
+    is_removable: 0
+    is_repeated: 0
+    is_calculated: 1        
+    min_value: 0
+    max_value: 0
+    value: 0              
+  grade_I:
+    GradeType: grade_type_lg
+    gradechar: I
+    is_removable: 1
+    is_repeated: 0
+    is_calculated: 0        
+    min_value: 0
+    max_value: 0
+    value: 0
+  grade_NG:
+    GradeType: grade_type_lg
+    gradechar: NG
+    is_removable: 1
+    is_repeated: 0
+    is_calculated: 0
+    min_value: 0
+    max_value: 0
+    value: 0

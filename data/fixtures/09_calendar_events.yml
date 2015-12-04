@@ -1,0 +1,22 @@
+CalendarEvents:              
+  normal_registration:
+    name: Normal Registration ## Registration period before penality perion begins
+    description: This is period of Normal Registration
+  registration_with_penality:
+    name: Late Registration
+    description: This is period of Normal Registration   
+  final_examination:
+    name: Final Examination
+    description: This is period of Final Examination     
+  test_period:
+    name: Test Period
+    description: This is period of Test
+  assignment_period:
+    name: Assignment Period
+    description: This is period of Assignments       
+  semester_break:
+    name: Semester Break Period
+    description: This is period of Semester Break       
+  graduation:
+    name: Graduation
+    description: This is period of Graduation     

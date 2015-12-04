@@ -1,0 +1,223 @@
+promotion_setting:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                PromotionSetting
+    module:               promotionsetting
+    prefix_path:          /promotionsetting
+    column:               id
+    with_wildcard_routes: true
+
+user:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                User
+    module:               user
+    prefix_path:          /user
+    column:               id
+    with_wildcard_routes: true
+
+program_section:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProgramSection
+    module:               programsection
+    prefix_path:          /programsection
+    column:               id
+    with_wildcard_routes: true
+
+academic_calendar_events:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                AcademicCalendarEvents
+    module:               academiccalendarevents
+    prefix_path:          /academiccalendarevents
+    column:               id
+    with_wildcard_routes: true
+
+academic_calendar:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                AcademicCalendar
+    module:               academiccalendar
+    prefix_path:          /academiccalendar
+    column:               id
+    with_wildcard_routes: true
+
+calendar_events:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                CalendarEvents
+    module:               calendarevents
+    prefix_path:          /calendarevents
+    column:               id
+    with_wildcard_routes: true
+
+student_academic_status:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                StudentAcademicStatus
+    module:               studentacademicstatus
+    prefix_path:          /studentacademicstatus
+    column:               id
+    with_wildcard_routes: true
+
+student_semester_action:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                StudentSemesterAction
+    module:               studentsemesteraction
+    prefix_path:          /studentsemesteraction
+    column:               id
+    with_wildcard_routes: true
+
+course:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Course
+    module:               course
+    prefix_path:          /course
+    column:               id
+    with_wildcard_routes: true
+
+grade_Grade:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Grade
+    module:               Grade
+    prefix_path:          /Grade
+    column:               id
+    with_wildcard_routes: true
+
+grade_type:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                GradeType
+    module:               gradetype
+    prefix_path:          /gradetype
+    column:               id
+    with_wildcard_routes: true
+
+center:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Center
+    module:               center
+    prefix_path:          /center
+    column:               id
+    with_wildcard_routes: true
+
+faculty:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Faculty
+    module:               faculty
+    prefix_path:          /faculty
+    column:               id
+    with_wildcard_routes: true
+
+program_checklist:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProgramChecklist
+    module:               programchecklist
+    prefix_path:          /programchecklist
+    column:               id
+    with_wildcard_routes: true
+
+checklist_breakdown:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ChecklistBreakdown
+    module:               checklistbreakdown
+    prefix_path:          /checklistbreakdown
+    column:               id
+    with_wildcard_routes: true
+
+student_status:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                StudentStatus
+    module:               studentstatus
+    prefix_path:          /studentstatus
+    column:               id
+    with_wildcard_routes: true
+
+action_on_student:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ActionOnStudent
+    module:               actiononstudent
+    prefix_path:          /actiononstudent
+    column:               id
+    with_wildcard_routes: true
+
+grade:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Grade
+    module:               grade
+    prefix_path:          /grade
+    column:               id
+    with_wildcard_routes: true
+
+program:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Program
+    module:               program
+    prefix_path:          /program
+    column:               id
+    with_wildcard_routes: true
+
+program_type:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ProgramType
+    module:               programtype
+    prefix_path:          /programtype
+    column:               id
+    with_wildcard_routes: true
+
+enrollment_type:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                EnrollmentType
+    module:               enrollmenttype
+    prefix_path:          /enrollmenttype
+    column:               id
+    with_wildcard_routes: true
+
+department:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Department
+    module:               department
+    prefix_path:          /department
+    column:               id
+    with_wildcard_routes: true
+
+student:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Student
+    module:               student
+    prefix_path:          /student
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

@@ -1,0 +1,37 @@
+StudentAcademicStatus:
+  status_not_determined:
+    name: No Status
+    value: 0
+    category: None  
+  dismissed: 
+    name: Dismissed
+    value: 1
+    category: Dismissed
+  adr: 
+    name: Academic Dismissal for Readmission
+    value: 2
+    category: Dismissed   
+  warning: 
+    name: Warning
+    value: 3
+    category: Warning    
+  passing: 
+    name: Passing
+    value: 4
+    category: Passing
+  probation: 
+    name: Probation 
+    value: 5
+    category: Warning             
+  dropout: 
+    name: Dropout
+    value: 6
+    category: Dismissed
+  withdrawal: 
+    name: Withdrawal
+    value: 7
+    category: None
+  delay:
+    name: Delay
+    value: 8
+    category: None ## Graduation Delay

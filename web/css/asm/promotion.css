@@ -1,0 +1,233 @@
+#student_info_year2{
+    width: 120px;
+}
+#student_info_semester2{
+    width: 120px;
+}
+#student_info_year{
+    width: 120px;
+}
+#student_info_semester{
+    width: 120px;
+}
+
+#student_info_student_id{
+      width: 120px;
+}
+#prom_query{
+    width: 650px;
+    float: left
+   
+        
+}
+#prom_addstud{
+    width: 800px;
+    margin: 0 auto;
+}
+#prom_but{
+   
+}
+
+#hor_line{
+    
+clear: both;
+margin-top: 30px;
+margin-bottom: 30px;
+width: 80%;
+margin-left: auto;
+margin-right: auto;
+}
+
+#student_info_program_id{
+    width: 300px;
+}
+#student_info_department_id{
+        width: 300px;
+
+}
+#student_info_college_id{
+        width: 300px;
+
+}
+
+
+.b-m-mpanel {
+	background: #F0F0F0 url(/images/asm/menu/menu_bg.gif) left repeat-y;
+	border: 1px solid #718BB7;
+	padding: 2px 0;
+	position: absolute;
+	z-index: 99997;
+	left:0px;
+	top:0px;
+}
+.b-m-split {
+	height: 6px;
+	background: url(/images/asm/menu/m_splitLine.gif) center repeat-x;
+	font-size: 0px;
+	margin: 0 2px;
+}
+.b-m-item, .b-m-idisable
+{
+    padding: 4px 2px;
+    margin: 0 2px 0 3px;
+    cursor: normal;
+    line-height:100%;
+}
+.b-m-idisable
+{
+    color:#808080;
+}
+.b-m-ibody, .b-m-arrow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+}
+.b-m-arrow {
+	background: url(/images/asm/menu/m_arrow.gif) right  no-repeat;	
+}
+.b-m-idisable .b-m-arrow
+{
+    background:none;
+}
+.b-m-item img, .b-m-ifocus img, .b-m-idisable img {
+	margin-right: 8px;
+}
+.b-m-ifocus {
+	background: url(/images/asm/menu/m_item.gif) repeat-x bottom;
+	border: 1px solid #AACCF6;
+	padding: 3px 1px ;
+    margin: 0 2px 0 3px;
+    cursor: normal;
+    line-height:100%;
+}
+.b-m-idisable img {
+	visibility:hidden;
+}
+    .target
+    {
+            border:solid 1px #ffccee;   
+            padding:5px;
+            background-color:Blue;
+            color:#fff;
+            display:inline;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**/
+    
+    
+    
+    html
+{
+    margin:0px;
+    padding:0px;
+ }
+body
+{
+	margin: 0;
+	background-color: #fff;
+	font-size: 12px;
+	font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; /* MAIN BODY FONTS */
+	padding: 0;
+	height: 100%;
+	width:100%;
+}
+
+
+input[type='text']
+{
+	border: solid 1px #3C7FB1;	
+	height:18px;
+}
+input[type=checkbox]
+{
+	border: none;
+}
+input[type=radio]
+{
+	border: none;
+}
+h1{
+font-size:16px;
+text-align:center;
+padding:10px 0; 
+}
+H2 {
+	font-size: 14px;
+}
+FIELDSET#select-stud {
+	border: solid 1px #CCC;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	padding: 1em 2em;
+	margin: 1em 0em;
+}
+
+LEGEND {
+	color: #333;
+	font-size: 14px;
+	padding: 0em .5em;
+	font-weight:bold;
+}
+
+.ellipsis
+{
+	white-space: nowrap;
+	text-overflow: ellipsis; /* for internet explorer */
+	overflow: hidden;
+	display: block;
+}
+html > body .ellipsis
+{
+	clear: both;
+}
+
+
+a.imgbtn
+{
+	color: #000000;
+}
+
+
+.info
+{
+    background:#EEFAF9 url("images/icons/information.png") no-repeat 5px 50%;
+    border:solid 1px #D6D6D6;
+    padding:5px;
+    padding-left:25px;
+    text-align:left;
+    margin:10px;
+}
+.important
+{
+    color:Red;
+ }
+
+.nodisplay
+{
+    display:none;        
+}
+
+img.picker
+{
+	    height:16px;
+	    width:16px;
+	    margin-left:-19px;
+	    vertical-align:middle;
+	    padding-bottom: 2px;
+	    cursor:pointer;
+	    border:none;		  
+}

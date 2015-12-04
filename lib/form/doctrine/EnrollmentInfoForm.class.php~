@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * EnrollmentInfo form.
+ *
+ * @package    srmsnew
+ * @subpackage form
+ * @author     EyuelG 
+ * @version    SVN: $Id: sfDoctrineFormTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ */ 
+class EnrollmentInfoForm extends BaseEnrollmentInfoForm
+{
+  public function getAcademicYear()
+  {
+    $acadamicYear[''] = "Enter Admission Year";
+    $curent = date('Y');
+    $length=strlen($curent);
+    $characters = 2;
+    $start = $length - $characters;     
+    $time = substr($curent , $start ,$characters);
+    $acadamicYear=array();
+    $acadamicYear[0]='Select Acadamic year';
+    for ($i = $curent-1; $i < 2093; $i++) {  
+      $academicYearIndex = $i.'/'.$time;   
+      $acadamicYear[$academicYearIndex]=$i.'/'.$time;    
+      $time++; 
+    }
+    return $acadamicYear ;
+  }   
+  
+  
+  public function configure()
+  {
+    $this->useFields(array('program_id', 'academic_year')); 
+    ##   Student Program information
+    $this->widgetSchema['academic_year'] = new sfWidgetFormChoice(array('choices'=>EnrollmentInfoForm::getAcademicYear() ));
+    $this->setWidget['program_id'] = new sfWidgetFormDoctrineChoice(array(
+       'model' => $this->getRelatedModelName('Program'),
+       'add_empty' => 'Select Program ',
+    ));   
+    
+    ##   Validator 
+    $this->setValidator['program_id'] = new sfWidgetFormDoctrineChoice(array(
+       'model' => $this->getRelatedModelName('Program'),
+    )); 
+        $this->validatorSchema['academic_year'] = new sfValidatorChoice(array('choices' => array_keys(EnrollmentInfoForm::getAcademicYear()), 'required' => true ));     
+    
+    unset($this['created_at'], $this['updated_at']);   
+  } 
+}

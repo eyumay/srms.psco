@@ -1,0 +1,9 @@
+Fixture
+- Create fixtures for setting files: 
+  Faculty, Department, ProgramType, EnrollmentType, Program, GradeType, Grade, Course, StudentSemesterAction, 
+  StudentAcademicStatus, CalendarEvent, AcademicCalendar, AcademicCalendarEvent, ProgramSection, Center
+- Edit display of backend generated forms
+  and add links
+TASK1 - Enrollment
+1. As student's bio-data is entered to the system, the student is automatically enrolled to program specified.
+  

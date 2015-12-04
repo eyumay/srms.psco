@@ -1,0 +1,9 @@
+AcademicCalendar:
+  first_year_calendar:
+    name: First Year Students Registration 
+    academic_year: 2012/13
+    description: Fresh Student's Graduation time 
+  second_year_calendar:
+    name: Second Year Students Registration 
+    academic_year: 2012/13
+    description: Second Year Students Graduation time       

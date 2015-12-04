@@ -1,0 +1,25 @@
+Department:
+  information_technology: 
+    Faculty: PSCO
+    name: Information Technology
+    description: This is a department in the college
+  
+  accounting: 
+    Faculty: PSCO
+    name: Accounting
+    description: This is a department in the college  
+    
+  human_resource_management: 
+    Faculty: PSCO
+    name: Human Resource Management
+    description: This is a department in the college      
+    
+  abm: 
+    Faculty: PSCO
+    name: Agricultural Business Management
+    description: This is a department in the college     
+    
+  law: 
+    Faculty: PSCO
+    name: Law
+    description: This is a department in the college  

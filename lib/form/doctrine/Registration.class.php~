@@ -1,0 +1,46 @@
+<?php 
+class RegistrationForm extends BaseForm  
+{
+  public function __construct($studentIds='', $courseIds='')
+  {
+    if ($studentIds == '' || $courseIds=='' )
+    {
+            return false; 
+    }
+    else{
+    	$this->studentIds	= $studentIds;    	
+    	$this->courseIds	= $courseIds;
+    }
+  }  
+  
+  public function configure()
+  { 
+ 
+    
+    $this->widgetSchema['course_id'] = new sfWidgetFormDoctrineChoice(array(
+            'multiple' => true,
+            'choices' => $courseIds,
+            'renderer_class' => 'sfWidgetFormSelectDoubleList',
+            'renderer_options' => array(
+                'associated_first' => false,
+                'label_unassociated' => 'All courses',
+                'label_associated' => 'Semester Courses'
+                )));
+    $this->widgetSchema['student_id'] = new sfWidgetFormChoice(array(
+            'multiple' => true,
+            'choices' => $studentIds,
+            'renderer_class' => 'sfWidgetFormSelectDoubleList',
+            'renderer_options' => array(
+                'associated_first' => false,
+                'label_unassociated' => 'All courses',
+                'label_associated' => 'Semester Courses'
+                )));
+    
+
+
+	 $this->validatorSchema['course_id'] = new sfValidatorPass();               
+    $this->validatorSchema['student_id'] = new sfValidatorPass();
+    
+    $this->widgetSchema->setNameFormat('registrationform[%s]');												 
+  }
+}

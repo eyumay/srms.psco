@@ -1,0 +1,16 @@
+StatusSetting:
+  status_1:
+    year: 1
+    semester: 1
+    min_grade_point: 1.2499
+    status: Dismissed
+  status_2:
+    year: 1
+    semester: 2
+    min_grade_point: 1.7499
+    status: Dismissed    
+  status_3:
+    year: 2
+    semester: 1
+    min_grade_point: 1.7499
+    status: Dismissed     

@@ -1,0 +1,44 @@
+Course: 
+  <?php for ($i = 100; $i <= 130; $i++): ?> 
+  <?php echo "ITCourse".$i ?>:   
+    GradeType: grade_type_lg 
+    course_number:  <?php echo "IT" . $i ."\n" ?>
+    corse_name: <?php echo "IT Course_" . $i ."\n" ?>
+    credit_houre: <?php echo ($i % 2) ? "3" : "4" ?>
+    aproval_date: 2013-02-02 	
+    description:  IT Department Course
+    status: 1
+  <?php endfor; ?> 
+  
+  <?php for ($i = 100; $i <= 130; $i++): ?> 
+  <?php echo "ACCTCourse".$i ?>:   
+    GradeType: grade_type_lg 
+    course_number:  <?php echo "ACCT" . $i ."\n" ?>
+    corse_name: <?php echo "ACCT Course_" . $i ."\n" ?>
+    credit_houre: <?php echo ($i % 2) ? "3" : "4" ?>
+    aproval_date: 2013-02-02 	
+    description:  Accounting Department Course
+    status: 1
+  <?php endfor; ?>   
+
+  <?php for ($i = 100; $i <= 130; $i++): ?> 
+  <?php echo "HRMCourse".$i ?>:   
+    GradeType: grade_type_lg 
+    course_number:  <?php echo "HRM" . $i ."\n" ?>
+    corse_name: <?php echo "HRM Course_" . $i ."\n" ?>
+    credit_houre: <?php echo ($i % 2) ? "3" : "4" ?>
+    aproval_date: 2013-02-02 	
+    description:  HRM Department Course
+    status: 1
+  <?php endfor; ?>   
+
+  <?php for ($i = 100; $i <= 130; $i++): ?> 
+  <?php echo "LAWCourse".$i ?>:   
+    GradeType: grade_type_lg 
+    course_number:  <?php echo "LAW" . $i ."\n" ?>
+    corse_name: <?php echo "LAW Course_" . $i ."\n" ?>
+    credit_houre: <?php echo ($i % 2) ? "3" : "4" ?>
+    aproval_date: 2013-02-02 	
+    description:  LAW Department Course
+    status: 1
+  <?php endfor; ?>   

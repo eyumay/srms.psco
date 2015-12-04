@@ -1,0 +1,10 @@
+GradeType:
+  grade_type_lg:
+    type_name: Letter Grade
+    description: Grade types like A, A+, B, B+, C, D ...
+  grade_type_pf:
+    type_name: Pass/Fail
+    description: Grade types like Pass or Fail ...
+  grade_type_subjective:
+    type_name: Subjective
+    description: Grade types like Excellent, Very good, Good ...        

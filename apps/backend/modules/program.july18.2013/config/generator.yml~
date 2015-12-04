@@ -1,0 +1,24 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Program
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          program
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:  
+        layout: stacked  
+        display: [ name, department_id, program_type_id, enrollment_type_id, status, number_of_semester, total_min_chr, total_max_chr ]
+        params: %%status%%, %%name%% %%program_type%%-%%department%%-%%enrollment_type%% - %%number_of_semester%% - %%total_min_chr%% - %%total_max_chr%%
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

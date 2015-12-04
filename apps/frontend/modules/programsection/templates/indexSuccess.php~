@@ -1,0 +1,23 @@
+<?php use_stylesheet('instr.css') ?>
+<h3> Students to Section Enrollment </h3>
+<em> Filter to enroll students to a section </em>  
+<?php include_partial('filterform', array('programs'			=> $programs, 
+														'years'				=> $years,
+														'semesters'			=> $semesters, 
+														'academicYears'	=> $academicYears	
+														'centers'			=> $centers													
+														 )) ?>
+
+<table>
+  <thead>
+    <tr>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+    </tr>
+  </tbody>
+</table>
+<p> Filtered Students </p>

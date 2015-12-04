@@ -1,0 +1,45 @@
+/* 
+    Document   : section
+    Created on : Feb 1, 2013, 3:35:33 AM
+    Author     : asmie
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+#secid1{
+    margin:0 auto;
+    margin-top: 10px;
+    margin-bottom : 10px;
+
+
+}
+#secid2{
+    margin:0 auto;
+    margin-bottom : 10px;
+    margin-top: 10px;
+
+}
+.sec th{
+    text-align: left;
+}
+#student_section_program{
+    width: 400px
+}
+#student_section_student_year{
+    width: 150px
+}
+#student_section_semester{
+    width: 150px
+}
+#naming{
+    width: 200px
+}
+#ordering{
+    width: 200px
+
+}
+#maxnum{
+    width: 200px
+
+}

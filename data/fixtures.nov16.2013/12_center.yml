@@ -1,0 +1,52 @@
+Center:
+  ambo:
+    name: Ambo 
+    description: Ambo Center 
+  sebeta:
+    name: Sebeta 
+    description: Sebeta Center 
+  woliso:
+    name: Woliso 
+    description: Woliso Center 
+  ziway:
+    name: Ziway 
+    description: Ziway Center 
+  bishoftu:
+    name: Bishoftu 
+    description: Bishoftu Center         
+  meki:
+    name: Meki 
+    description: Meki Center     
+  shambu:
+    name: Shambu 
+    description: Shambu Center  
+  neqemte:
+    name: Nekemte 
+    description: Nekemte Center        
+  gimbi:
+    name: Gimbi 
+    description: Gimbi Center     
+  dembi_dollo:
+    name: Dembi Dollo 
+    description: Ambo Center   
+  shashemene:
+    name: Shashemene
+    description: shashemene center
+  asella:
+    name: Asella
+    description: Asella center
+  arsi_robe:
+    name: Arsi Robe
+    description: Arsi Robe center
+  bale:
+    name: Bale
+    description: Bale center
+  fiche:
+    name: Fiche
+    description: Fiche center
+  adola:
+    name: Adola
+    description: Adola center
+  yabello:
+    name: Yabello
+    description: Yabello center    

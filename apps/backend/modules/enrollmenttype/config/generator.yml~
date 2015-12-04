@@ -1,0 +1,23 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           EnrollmentType
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          enrollment_type
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        display: [ name, overload, underload ]
+      list:
+        display: [ name, overload, underload ]
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

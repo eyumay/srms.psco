@@ -1,0 +1,25 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Department
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          department
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        display: [faculty_id, name, description ]
+      list:    
+        display: [ name, description ]
+        params: %%faculty%%
+      filter:
+        display: [faculty_id, name, description ]
+      form:    ~
+      edit:    ~
+      new:     ~

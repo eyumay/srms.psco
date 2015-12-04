@@ -1,0 +1,11 @@
+AcademicCalendarEvents:
+  calendar_1:
+    CalendarEvents: normal_registration
+    AcademicCalendar: first_year_calendar
+    start_date: 03-05-2013
+    end_date: 03-06-2013
+  calendar_2:
+    CalendarEvents: normal_registration
+    AcademicCalendar: second_year_calendar
+    start_date: 03-05-2013
+    end_date: 03-06-2013    

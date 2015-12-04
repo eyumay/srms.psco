@@ -1,0 +1,179 @@
+/* 
+    Document   : my.css
+    Created on : Jan 3, 2013, 2:06:56 AM
+    Author     : asmie
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+tr.spaceUnder > td{
+    padding-bottom: 1.5em;
+}
+#resform{
+    
+    width: 100%;
+    height: 300px;
+    background: #cccccf;
+    border-radius: 20px
+    
+}
+#resformtb{
+    margin:0 auto;
+    margin-top: 50px;
+}
+#container {
+    position: absolute;
+    background-color:#CCC;
+    width: 70%;
+    padding: 2px;
+        
+}
+.table3 td{
+    padding: 20px;
+    
+}
+
+#searchcont{
+    background-color:#EEE;
+    display:table;
+    cellpadding:30px;
+    width: 100%
+}
+
+#form {
+    position: relative;
+    background-color:#DDD;
+   /* top: 100px*/
+
+}
+
+#box1 {
+    background: #CCCCCC;
+    top: 100px;
+    left: 50px;
+}#box2 {
+   /* top: 200px;
+    left: 50px;*/
+}
+
+#contentwrapper{
+    float: left;
+    width: 100%;
+}
+
+#contentcolumn{
+    margin-left: 200px; /*Set left margin to LeftColumnWidth*/
+}
+
+#leftcolumn{
+    float: left;
+    width: 200px; /*Width of left column*/
+    margin-left: -100%;
+    background: #C8FC98;
+}
+#conttab{
+    float:left;
+    background-color:#DDDDDD;
+    padding:5px;
+    display:table;
+    cellpadding:30px;
+}
+#cont2
+{
+
+    float:left;
+    width:200px;
+}
+
+
+
+
+
+.overlabel {
+    position: relative;
+}
+.overlabel label {
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    color: #999;
+    font-size:12px;
+    cursor: text;
+}
+
+#newstid
+{
+    border: 1px solid #781351
+}
+
+
+.ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 12px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 16px;
+	overflow: hidden;
+}
+
+.ac_loading {
+	background: white url('../images/indicator.gif') right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #0A246A;
+	color: white;
+}
+#exam_result_program_id{
+    width: 300px;
+}
+#exam_result_module_id{
+        width: 300px;
+
+}
+#exam_result_instructor_id{
+        width: 300px;
+
+}
+#exam_result_course_id{
+        width: 300px;
+
+}
+#exam_result_exam_type_id{
+        width: 300px;
+
+}
+
+
+

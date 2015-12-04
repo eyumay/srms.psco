@@ -1,0 +1,320 @@
+CourseChecklist:
+  <?php for ($i = 100; $i <= 103; $i++): ?>  
+  extension_year_1_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"common\n"; ?>
+    status: 1  
+  <?php endfor; ?>
+  
+  <?php for ($i = 104; $i <= 107; $i++): ?>  
+  extension_year_1_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 108; $i <= 111; $i++): ?>  
+  extension_year_2_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 112; $i <= 115; $i++): ?>  
+  extension_year_2_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 116; $i <= 119; $i++): ?>  
+  extension_year_3_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 120; $i <= 123; $i++): ?>  
+  extension_year_3_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 124; $i <= 127; $i++): ?>  
+  extension_year_4_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 128; $i <= 130; $i++): ?>  
+  extension_year_4_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_extension  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>
+  
+  
+  
+  
+  
+  
+    <?php for ($i = 100; $i <= 103; $i++): ?>  
+  distance_year_1_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"common\n"; ?>
+    status: 1  
+  <?php endfor; ?>
+  
+  <?php for ($i = 104; $i <= 107; $i++): ?>  
+  distance_year_1_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 108; $i <= 111; $i++): ?>  
+  distance_year_2_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 112; $i <= 115; $i++): ?>  
+  distance_year_2_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 116; $i <= 119; $i++): ?>  
+  distance_year_3_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 120; $i <= 123; $i++): ?>  
+  distance_year_3_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 124; $i <= 127; $i++): ?>  
+  distance_year_4_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 128; $i <= 130; $i++): ?>  
+  distance_year_4_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_distance  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>
+  
+ 
+  
+  
+  
+  <?php for ($i = 100; $i <= 103; $i++): ?>  
+  weekend_year_1_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"common\n"; ?>
+    status: 1  
+  <?php endfor; ?>
+  
+  <?php for ($i = 104; $i <= 107; $i++): ?>  
+  weekend_year_1_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 108; $i <= 111; $i++): ?>  
+  weekend_year_2_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 112; $i <= 115; $i++): ?>  
+  weekend_year_2_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 116; $i <= 119; $i++): ?>  
+  weekend_year_3_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 120; $i <= 123; $i++): ?>  
+  weekend_year_3_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 124; $i <= 127; $i++): ?>  
+  weekend_year_4_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 128; $i <= 130; $i++): ?>  
+  weekend_year_4_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_weekend  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>
+  
+  
+  
+  
+  
+  
+ <?php for ($i = 100; $i <= 103; $i++): ?>  
+  regular_year_1_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"common\n"; ?>
+    status: 1  
+  <?php endfor; ?>
+  
+  <?php for ($i = 104; $i <= 107; $i++): ?>  
+  regular_year_1_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 1
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 108; $i <= 111; $i++): ?>  
+  regular_year_2_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  
+  <?php for ($i = 112; $i <= 115; $i++): ?>  
+  regular_year_2_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 2
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 116; $i <= 119; $i++): ?>  
+  regular_year_3_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 120; $i <= 123; $i++): ?>  
+  regular_year_3_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 3
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 124; $i <= 127; $i++): ?>  
+  regular_year_4_semester_1_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 1
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?>  
+  <?php for ($i = 128; $i <= 130; $i++): ?>  
+  regular_year_4_semester_2_checklist_<?php echo $i; ?>:
+    Program: accounting_program_regular  
+    Course: ACCTCourse<?php echo $i; ?> 
+    year: 4
+    semester: 2
+    course_type: <?php echo (($i%2)==0)? "major\n":"supportive\n"; ?>
+    status: 1  
+  <?php endfor; ?> 
+  
+  

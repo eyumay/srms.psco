@@ -1,0 +1,124 @@
+/* 
+    Document   : mycustomstyleshit
+    Created on : Dec 12, 2012, 10:52:56 AM
+    Author     : asmie
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#exam_result_filters_program_id{
+    width: 300px;
+}
+#exam_result_filters_module_id{
+        width: 300px;
+
+}
+#exam_result_filters_instructor_id{
+        width: 300px;
+
+}
+#exam_result_filters_course_id{
+        width: 300px;
+
+}
+#exam_result_filters_exam_type_id{
+        width: 300px;
+
+}
+#exam_result_filters_year{
+        width: 80px;
+
+}
+#box-table-a
+{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+
+    margin: 45px;
+    width: 90%;
+    text-align:center;
+    border-collapse: collapse;
+    margin: 0 auto; 
+}
+.new{
+   color: blue;
+}
+#box-table-a th
+{
+    font-size: 15px;
+    font-weight: normal;
+    font-weight: bold;
+    font-family: serif;
+    padding: 8px;
+    background: #999999;
+    border-top: 4px solid #444444;
+    border-bottom: 1px solid #fff;
+    color: #039;
+}
+#box-table-a td
+{
+    padding: 7px;
+    /*background: #cccccc; */
+    font-family: serif;
+        /*border-bottom: 1px solid #fff;
+        color: #669;
+        border-top: 1px solid transparent;*/
+}
+
+#box-table-a tr.even td
+{
+    background-color: #DDDDDD;
+}
+
+#box-table-a tr.odd td
+{
+    background-color: #EEEEEE;
+}
+#box-table-a tr:hover td
+{
+    background: #CCCCCC;
+    /*color: #339;*/
+}
+/*
+#box-table-b tr:hover
+{
+    background-color: #fff;
+}*/
+
+#box-table-b td
+{
+    padding: 12px 15px;
+    border-bottom: 1px dotted #999;
+}
+
+
+
+#box-table-b
+{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    margin: 45px;
+    width: 480px;
+    text-align: center;
+    border-collapse: collapse;
+    border-top: 7px solid #9baff1;
+    border-bottom: 7px solid #9baff1;
+}
+#box-table-b th
+{
+    /*font-size: 13px;
+    font-weight: normal;
+    padding: 8px;
+    background: #e8edff;
+    border-right: 1px solid #9baff1;
+    border-left: 1px solid #9baff1;
+    color: #039;*/
+}
+#box-table-b td
+{
+    /*padding: 8px;
+    background: #e8edff; 
+    border-right: 1px solid #aabcfe;
+    border-left: 1px solid #aabcfe;
+    color: #669;*/
+}
+

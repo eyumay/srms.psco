@@ -1,0 +1,121 @@
+EnrollmentInfo:
+<?php for ($i = 101; $i <= 110; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_distance    
+    ProgramSection: program_section_accounting_distance_1
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+<?php for ($i = 111; $i <= 120; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_distance    
+    ProgramSection: program_section_accounting_distance_2
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+    
+<?php for ($i = 121; $i <= 130; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_distance    
+    ProgramSection: program_section_accounting_distance_3
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+<?php for ($i = 131; $i <= 140; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_distance    
+    ProgramSection: program_section_accounting_distance_4
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+<?php for ($i = 141; $i <= 150; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_weekend
+    ProgramSection: program_section_accounting_weekend_1
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+<?php for ($i = 151; $i <= 160; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_weekend
+    ProgramSection: program_section_accounting_weekend_2
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+<?php for ($i = 161; $i <= 170; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_extension
+    ProgramSection: program_section_accounting_extension_1
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+<?php for ($i = 171; $i <= 180; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_extension
+    ProgramSection: program_section_accounting_extension_2
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+
+<?php for ($i = 181; $i <= 190; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_regular
+    ProgramSection: program_section_accounting_regular_1
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2010/11
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>
+
+<?php for ($i = 191; $i <= 200; $i++): ?>
+  enrollment_<?php echo $i ?>:
+    Program: accounting_program_regular
+    ProgramSection: program_section_accounting_regular_2
+    Student: student_<?php echo $i."\n" ; ?>
+    academic_year: 2011/12
+    year: 1
+    semester: 1
+    semester_action: 0
+    enrollment_action: 1
+<?php endfor; ?>

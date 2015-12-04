@@ -1,0 +1,192 @@
+<html>
+
+    <head>
+        <?php include_http_metas() ?>
+        <?php include_metas() ?>
+        <?php include_title() ?>
+        <link rel="shortcut icon" href="/favicon.ico" />
+
+        <?php use_stylesheet('bootstrap.css') ?>
+        <?php use_javascript('bootstrap.js') ?>
+
+        <?php include_stylesheets() ?>
+        <?php include_javascripts() ?>
+
+
+        <script language="javascript" type="text/javascript">
+            <!--
+            function mypopup()
+            {
+                idnumber=document.getElementById("student_student_id").value;
+                //alert(idnumber);
+                var link = 'http://localhost/camera/test.php?id=' + idnumber; 
+                // alert(link);
+                mywindow = window.open(link, "Take Picture", location=1,status=1,scrollbars=1,  width=600,height=500);
+                mywindow.moveTo(0, 0);
+            }
+
+            // -->
+        </script>
+
+    </head>
+    <body bgcolor="#ffffff">
+
+    
+       <div class="cont">
+
+            <div class="nav nav-tabs " style="background-color: 000099" >
+				 <!--                
+                <img src="/images/srslogo.jpg" width="100%" height="100%" alt="srs logo"/>
+                <p style="text-align: center">
+                <font style="font-family: serif; font-size:x-large ; color: #f1f1f1; text-align: center">    </font>               
+                </p>
+                --> 
+                <h1 style="color: white;" align="center"> Student Record Management System </h1> 
+            </div>
+
+     
+
+            <div class="leftlink">
+                <!--                <div id="accordion">-->
+                <button style="width: 100%" type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#student-actions">
+                    Students
+                </button>
+                <div id="student-actions" class="collapse">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="<?php echo url_for('student/index') ?>"> Manage Student Record </a></li>
+                        <li><a href="<?php echo url_for('student/new') ?>">  Add New Student</a></li>
+                        <li><a href="#">Add And Drop</a></li>
+                        <li><a href="#">Exemption of Students</a></li>
+                        <li><a href="#">Promotion</a></li>
+                        <li><a href="<?php echo url_for('student/showregistrationfilterform') ?>">  Registration</a></li>
+                        <li><a href="#">Withdraw or Dropout</a></li>
+                        <li><a href="#"> Re admission </a></li>
+                        <li><a href="#">Under</a></li>
+                        <li><a href="#">Transfer</a></li>
+                        <li><a href="#">Manage Courses</a></li>
+                    </ul>
+                </div>
+                <button style="width: 100%" type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#registration-actions">
+                    Registration to Course
+                </button>
+                <div id="registration-actions" class="collapse"> 
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="<?php echo url_for('student/showregistrationfilterform') ?>"> Register Class of Students </a></li>
+                        <li><a href="<?php echo url_for('student/new') ?>">  Register One Student </a></li>
+                    </ul>
+                </div>                
+                <button style="width: 100%" type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#student-program-section">
+                    Student Program Section
+                </button>
+                <div id="student-program-section" class="collapse">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="<?php echo url_for('programsection/new') ?>"> Create Section </a></li>
+                        <li><a href="<?php echo url_for('programsection/filter') ?>"> Enroll Class to Section</a></li>
+                        <li><a href="<?php echo url_for('programsection/showfiltertoenrollselected') ?>"> Enroll Selected to Section</a></li>
+                        <li><a href="#">Change StudentSection</a></li>
+                    </ul>
+                </div>
+                <button style="width: 100%" type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#instractore-actions">
+                    Instructors
+                </button>
+                <div id="instractore-actions" class="collapse">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="<?php echo url_for('instructor/index') ?>">Show instructors</a></li>
+                        <li><a href="<?php echo url_for('examresult/index') ?>">Show Examresult</a></li>
+                        <li><a href="<?php echo url_for('instructorcourseoffering/index') ?>">List of instructors with course</a></li>
+                        <li><a href="<?php echo url_for('instructorcourseoffering/new') ?>">Offer course for instructor</a></li>
+                    </ul>
+                </div>
+
+                <button style="width: 100%" type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#grade-actions">
+                    Grade 
+                </button>
+                <div id="grade-actions" class="collapse">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="<?php echo url_for('studentmark/new') ?>">Enter exam result per student</a></li>
+                        <li><a href="#">Enter exam result per sectoin</a></li>
+                        <li><a href="<?php echo url_for('studentmark/index') ?>">Show student exam result</a></li>
+                    </ul>
+                </div>
+
+
+                <button style="width: 100%" type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#course-actions">
+                    Courses
+                </button>
+                <div id="course-actions" class="collapse">
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="<?php echo url_for('course/new') ?>"> Add new Course </a></li>
+                        <li><a href="<?php echo url_for('course/index') ?>"> Course Offering for Section </a></li>
+                        <li><a href="#">Assign Course to one Student</a></li>
+                    </ul>
+                </div>
+
+                <button style="width: 100%" type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#admin-actions">
+                    Administration 
+                </button>
+                <div id="admin-actions" class="collapse ">
+                    <ul class="nav nav-tabs nav-stacked">
+
+                        <li><a href="<?php echo url_for('offermodule/index') ?>"> Offer Module </button></a></li>
+                        <li><a href="#">Manage Colleges (Schools) </a></li>
+                        <li><a href="#">Manage Department </a></li>
+                        <li><a href="#">Manage Enrollment type  </a></li>
+                        <li><a href="#">Manage Program type </a></li>
+                        <li><a href="#">Manage Program Level</a></li>
+                        <li><a href="#">Manage Stream type</a></li>
+                        <li><a href="#">Manage Grade Details</a></li>
+                        <li><a href="#">Manage Grade Status</a></li>
+                        <li><a href="#">Manage Grade Type</a></li>
+                        <li><a href="#"> Manage Exam Types </a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <!--        <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
+                        simple collapsible
+                    </button>
+            
+                    <div id="demo" class="collapse in">Copyright © 2013, All Rights Reserved   </div>-->
+
+
+
+
+            <div class="mbody">
+						 <h3><?php if ($sf_user->hasFlash('notice')): ?>
+						<div class="flash_notice">
+						<?php  
+									  echo $sf_user->getFlash('notice');
+									  $sf_user->setFlash('notice', '');
+						?>
+						</div>
+						<?php endif; ?>
+						
+						<?php if ($sf_user->hasFlash('error')): ?>
+						<div class="flash_error">
+						<?php echo $sf_user->getFlash('error');
+			                    $sf_user->setFlash('error', '');
+				       ?>
+						</div>
+						<?php endif; ?>
+						</h3>          
+						  
+                <?php echo $sf_content ?>
+            </div>
+        </div>
+<!--        <div class="navbar" style="background-color: #9398c9">
+
+            <h6 style="text-align: center"> Copyright © 2013, All Rights Reserved    </h6>
+
+
+        </div>-->
+
+    </body>
+</html>

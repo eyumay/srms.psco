@@ -1,0 +1,17 @@
+EnrollmentType:
+  distance:
+    enrollment_type_name: Distance
+    overload: 12
+    underload: 9
+  regular:
+    enrollment_type_name: Regular
+    overload: 24
+    underload: 15
+  extension:
+    enrollment_type_name: Extension
+    overload: 15
+    underload: 9
+  weekend:  
+    enrollment_type_name: Weekend
+    overload: 15
+    underload: 9

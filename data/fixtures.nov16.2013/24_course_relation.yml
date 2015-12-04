@@ -1,0 +1,11 @@
+RelatedCourses:
+  <?php 
+  for ($i = 100; $i <= 120; $i++): ?>  
+  related_course_<?php echo $i; ?>:      
+    prerequisite_course_number: <?php echo "ACCT".$i."\n"; ?>
+    Course: ACCTCourse<?php echo $i+4; ?>    
+    course_relation_type: prerequisite
+  <?php
+  endfor; ?>
+  
+  

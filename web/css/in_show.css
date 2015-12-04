@@ -1,0 +1,40 @@
+
+.in_show
+{
+ 
+}
+.in_show th
+{
+text-align: left;
+
+/*background-color:#EEEEEE;*/
+/*font-weight: bold;*/
+/*text-align: left;*/
+
+}
+.in_show td.remark
+{
+
+}
+.in_show td
+{
+
+ /*color:#aaaaaa;*/
+ /*font-weight: bold;*/
+
+}
+.in_show td:hover
+{
+/*background-color:#6699CC;*/
+/*color:#000000;*/
+}
+.instructor
+{
+/*margin-left: 70%;*/
+/*color: #aaaaaa;*/
+/*font-weight: bold;*/
+}
+.in_show td.remark
+{
+ /*font-size: 85%;*/
+}

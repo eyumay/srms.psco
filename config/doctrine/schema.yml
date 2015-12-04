@@ -1,0 +1,551 @@
+Faculty:
+  actAs: { Timestampable: ~ }
+  columns:
+    name:		                        { type: string(250), notnull: true, unique: true }
+    description:                    { type: string(500) }
+
+Department:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    name:                           { type: string(250), notnull: true, unique: true }
+    faculty_id:                	    { type: integer, notnull: true }
+    description:                    { type: string(500) }
+  relations:
+    Faculty:                        { local: faculty_id, foreign: id, foreignAlias: Departments }
+
+ProgramType:
+  actAs:                            { Timestampable: ~ }  
+  columns:
+    type:                           { type: string(255), notnull: true }
+    name:                           { type: string(255), notnull: true }     
+
+EnrollmentType:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    name:                           { type: string(255), notnull: true, unique: true  }
+    overload:                       { type: integer, notnull: true }
+    underload:                      { type: integer, notnull: true }
+
+CalendarEvents:             
+  actAs:                            { Timestampable: ~ }  
+  columns:
+    name:                           { type: string(255), notnull: true }
+    description:                    { type: string(500) }
+
+AcademicCalendar:
+  actAs:                            { Timestampable: ~ }  
+  columns:
+    name:                           { type: string(255), notnull: true }
+    academic_year:                  { type: string(255), notnull: true }
+    description:                    { type: string(400) }
+
+AcademicCalendarEvents:             
+  actAs:                            { Timestampable: ~ }  
+  columns:
+    event_id:                       { type: integer, notnull: true }
+    academic_calendar_id:           { type: integer, notnull: true }
+    start_date:                     { type: date, notnull: true }	
+    end_date:                       { type: date }	
+  relations:
+    CalendarEvents:                 { local: event_id, foreign: id } 
+    AcademicCalendar:               { local: academic_calendar_id, foreign: id } 
+
+Program:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    name:                           { type: string(255), notnull: true  }
+    department_id:                  { type: integer, notnull: true }    
+    program_type_id:                { type: integer, notnull: true }
+    enrollment_type_id:             { type: integer, notnull: true }
+    minor:                          { type: string(255) }
+    number_of_semesters:            { type: integer, notnull: true }
+    total_max_chr:                  { type: integer, notnull: true }
+    total_min_chr:                  { type: integer, notnull: true }
+    number_of_years:                { type: integer, notnull: true }
+    max_number_of_years:            { type: integer, notnull: true }
+    approval_date:                  { type: date }
+    status:                         { type: boolean, notnull: true }
+  relations:
+    Department:                     { onDelete: CASCADE, local: department_id, foreign: id, foreignAlias: Programs } 
+    ProgramType:                    { onDelete: CASCADE, local: program_type_id, foreign: id, foreignAlias: Programs } 
+    EnrollmentType:                 { onDelete: CASCADE, local: enrollment_type_id, foreign: id, foreignAlias: Programs } 
+  indexes:
+    program_index: 
+      fields:                       [ department_id, name ]
+      type:                         unique 
+
+ProgramSection:
+  actAs:                            { Timestampable: ~ }  
+  columns:
+    program_id:                     { type: integer, notnull: true }
+    center_id:                      { type: integer, notnull: true }
+    academic_advisor_id:            { type: integer }
+    academic_calendar_id:           { type: integer, notnull: true }
+    number_of_student:              { type: integer, notnull: true }  
+    academic_year:                  { type: string(255), notnull: true }
+    year:                           { type: integer, notnull: true }    
+    semester:                       { type: integer, notnull: false }
+    section_number:                 { type: integer, notnull: true }	
+    is_activated:                   { type: boolean, notnull: true, default:0 }	
+    is_promoted:                    { type: boolean, notnull: true, default:0 }	
+  relations:  
+    Program:                        { onDelete: CASCADE, local: program_id, foreign: id, foreignAlias: ProgramSections }      
+    AcademicCalendar:               { onDelete: CASCADE, local: academic_calendar_id, foreign: id, foreignAlias: ProgramSections }      
+    Instructor:                     { local: academic_advisor_id, foreign: id, foreignAlias: ProgramSections }      
+    Center:                         { local: center_id, foreign: id, foreignAlias: ProgramSections }      
+  indexes:
+    batch_section_index: 
+      fields:                       [ program_id, academic_year, year, semester, section_number, center_id ]
+      type:                         unique 
+   
+AcadamicPosition:
+  actAs:                            { Timestampable: ~ }
+  columns:
+     position_name:                 { type: string(250), notnull: true, unique: true }
+
+Instructor:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    department_id:                  { type: integer, notnull: true } 
+    academic_position_id:           { type: integer, notnull: true } 
+    instructor_id_number:           { type: string(250), notnull: true, unique: true }
+    date_of_birth:                  { type: date, notnull: true }
+    gender:                         { type: string(30), notnull: true }
+    picture:                        { type: string(250), notnull: false }
+    title:                          { type: string(250), notnull: true }
+    qualification:                  { type: string(255), notnull: true }
+    acadamic_position:              { type: string(255), notnull: true }    
+    town:                           { type: string(255), notnull: true }
+    woreda:                         { type: string(250), notnull: true }
+    kebele:                         { type: string(250), notnull: true }
+    house_number:                   { type: string(250), notnull: true }
+    nationality:                    { type: string(255), notnull: true }
+    ethnicity:                      { type: string(255), notnull: true }
+    telephone:                      { type: string(250) }
+    remark:                         { type: string(500) }
+  relations:
+    Department:                     { onDelete: CASCADE, local: department_id, foreign: id }
+    AcademicPosition:               { onDelete: CASCADE, local: academic_postion_id, foreign: id }
+
+GradeType:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    name:                           { type: string(250), notnull: true, unique: true }
+    description:                    { type: string(500) }
+    
+Center:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    name:                           { type: string(250), notnull: true, unique: true }
+    description:                    { type: string(500) }
+
+StudentAcademicStatus:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    name:                           { type: string(255), notnull: true }#Pass, Warning, ADR, AD, Probation, Distinction, Great Dist 
+    value:                          { type: integer, notnull: true } 
+    category:                       { type: string(255), notnull: true }     
+    
+StatusSetting:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    year:                           { type: integer, notnull: true }
+    semester:                       { type: integer, notnull: true }
+    min_grade_point:                { type: float, notnull: true }
+    max_grade_point:                { type: float, notnull: true }
+    status:                         { type: string(50), notnull: true }
+
+StudentSemesterAction:
+  actAs:                            { Timestampable: ~ }
+  columns: 
+    name:                           { type: string(35), notnull: true, unique: true }#Enrolled, Registerred, Withdrawn, Dropout, LateRegisterred
+    value:                          { type: integer, notnull: true } 
+    description:                    { type: string(500) } 
+    
+Course: 
+  actAs:                            { Timestampable: ~ }
+  columns:    
+    grade_type_id:                  { type: integer, notnull: true }
+    department_id:                  { type: integer, notnull: true }
+    course_number:                  { type: string(250), notnull: true } 
+    name:                           { type: string(250), notnull: true }
+    credit_houre:                   { type: integer, notnull: true } 
+    ac_minutes:                     { type: string(250) } 
+    aproval_date:                   { type: date }	
+    description:                    { type: string(500) } 
+    status:                         { type: boolean, default:1}
+  relations:
+    GradeType:                      { local: grade_type_id, foreign: id }    
+    Department:                     { local: department_id, foreign: id, foreignAlias: Courses }    
+  indexes:
+    course_index:
+      fields:                       [ department_id, course_number ] #Course shall not be entered twice, Course is unique under department
+      type:                         unique
+
+
+CourseChecklist:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    course_id:                      { type: integer, notnull: true }
+    program_id:                     { type: integer, notnull: true }
+    year:                           { type: integer, notnull: true }
+    semester:                       { type: integer, notnull: true }
+    course_type:                    { type: string(50) } #Major, Supportive, Common 
+    status:                         { type: boolean, default:1}
+  relations:
+    Course:                         { local: course_id, foreign: id, foreignAlias:CourseChecklists }
+    Program:                        { local: program_id, foreign: id, foreignAlias:CourseChecklists  }
+  indexes:
+    course_checklist_index:
+      fields:                       [ program_id, course_id, year, semester ]
+      type:                         unique
+
+Student:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    student_uid:                    { type: string(255), notnull: true, unique: true } #University ID
+    name:                           { type: string(255), notnull: true }
+    fathers_name:                   { type: string(255), notnull: true }
+    grandfathers_name:              { type: string(255), notnull: true }
+    mother_name:                    { type: string(255), notnull: false }
+    date_of_birth:                  { type: date, notnull: true }
+    admission_year:                 { type: string(255), notnull: true }
+    sex:                            { type: string(255), notnull: true }
+    nationality:                    { type: string(255), notnull: true }
+    photo:                          { type: string(255), notnull: false }
+    birth_location:                 { type: string(255), notnull: false}
+    residence_city:                 { type: string(255), notnull: false }
+    residence_woreda:               { type: string(255), notnull: false }
+    residence_kebele:               { type: string(255), notnull: false }
+    residence_house_number:         { type: string(255), notnull: false }
+    ethinicity:                     { type: string(255), notnull: false }
+    telephone:                      { type: string(255), notnull: false } 	
+    email:                          { type: string(255), notnull: false } 	
+  indexes:
+    student_index: 
+      fields:                       [ name, fathers_name, grandfathers_name, date_of_birth ]
+      type:                         unique 
+    
+StudentCenter:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    center_id:                      { type: integer, notnull: true }
+    student_id:                     { type: integer, notnull: true }    
+  relations:
+    Center:                         { local: center_id, foreign: id }    
+    Student:                        { local: student_id, foreign: id }  
+    
+SectionCourseOffering:          
+  actAs:                            { Timestampable: ~ }
+  columns:
+    course_id:                      { type: integer, notnull: true }
+    grade_status:                   { type: integer, notnull: true } #0 -Grade not submitted, 1- Grade Submitted First Time, 2-Regraded
+    instructor_id:                  { type: integer }    
+    section_id:                     { type: integer, notnull: true }
+  relations:
+    Course:                         { local: course_id, foreign: id }    
+    Instructor:                     { local: instructor_id, foreign: id }    
+    ProgramSection:                 { onDelete: CASCADE, local: section_id, foreign: id, foreignAlias: SectionCourseOfferings }    
+  indexes:
+    section_course_offering_index:
+      fields:                       [ course_id, section_id ]
+      type:                         unique
+
+    
+SemesterType:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    name:                           { type: string(255), notnull: true }     
+#ProgramChecklist:
+#  actAs:                            { Timestampable: ~ }
+#  columns:
+#    program_id:                     { type: integer, notnull: true, unique: true }
+#    number_of_semesters:            { type: integer, notnull: true }
+#    total_maximum_chr:              { type: integer, notnull: true }
+#    total_minimum_chr:              { type: integer, notnull: true }
+#    number_of_years:                { type: integer, notnull: true }
+#    max_number_of_years:            { type: integer, notnull: true }
+#    status:                         { type: boolean, notnull: true, default: 1 }
+#    remark:                         { type: string(4000), notnull: true }
+#  relations:
+#    Program:                        { onDelete: CASCADE, local: program_id, foreign: id, foreignAlias: ProgramCheckLists } 
+ProgramChecklistBreakdown:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    program_id:                     { type: integer, notnull: true }
+    semester_type_id:               { type: integer, notnull: true }    
+    year:                           { type: integer, notnull: true }
+    semester:                       { type: integer, notnull: true }
+    semester_min_chr:               { type: integer, notnull: true }
+    semester_max_chr:               { type: integer, notnull: true }
+  relations:
+    Program:                        { onDelete: CASCADE, local: program_id, foreign: id, foreignAlias: ProgramCheckListBreakdowns }      
+    SemesterType:                   { onDelete: CASCADE, local: semester_type_id, foreign: id, foreignAlias: ProgramCheckListBreakdowns }      
+
+EnrollmentInfo:
+  actAs:                            { Timestampable: ~ }
+  columns: 
+    student_id:                     { type: integer, notnull: true }
+    student_uid:                    { type: string(255) }   #University ID, Change it to notnull true
+    program_id:                     { type: integer, notnull: true }
+    section_id:                     { type: integer, notnull: false, default:NULL } 
+    academic_year:                  { type: string(10), notnull: true }
+    year:                           { type: integer, notnull: false }
+    semester:                       { type: integer, notnull: false }
+    leftout:                        { type: boolean, notnull: false, default: 0 }
+    academic_status:                { type: integer, notnull: false, default: 0 } #Pass, warning, ADR, AD, Probation, Distinction, Great Distinction
+    semester_action:                { type: integer, notnull: false, default: 0 } #Enrolled, Registerred, Withdrawn ... keeps students last action
+    payment_status:                 { type: integer, notnull: false, default: 0 }   
+    enrollment_action:              { type: integer, notnull: false, default: 0 } #Admission, Promotion, transfer, readmission ... keeps semester enrollment status
+    mention:                        { type: string(5), notnull: false } 
+    previous_chrs:                  { type: integer, notnull: false, default: 0 }
+    semester_chrs:                  { type: integer, notnull: false, default: 0 }
+    total_chrs:                     { type: integer, notnull: false, default: 0 }
+    previous_grade_points:          { type: float, notnull: false, default: 0 }
+    semester_grade_points:          { type: float, notnull: false, default: 0 }
+    total_grade_points:             { type: float, notnull: false, default: 0 }
+    previous_repeated_chrs:         { type: float, notnull: false, default: 0 }
+    semester_repeated_chrs:         { type: float, notnull: false, default: 0 }
+    total_repeated_chrs:            { type: float, notnull: false, default: 0 }
+    previous_repeated_grade_points: { type: float, notnull: false, default: 0 }
+    semester_repeated_grade_points: { type: float, notnull: false, default: 0 }
+    total_repeated_grade_points:    { type: float, notnull: false, default: 0 }
+    program_checklist_id:           { type: integer, notnull: false, default: 0 }
+  relations:
+    Student:                        { local: student_id, foreign: id, foreignAlias: EnrollmentInfos }
+    Program:                        { local: program_id, foreign: id, foreignAlias: EnrollmentInfos }
+    ProgramSection:                 { local: section_id, foreign: id, foreignAlias: EnrollmentInfos }
+  #indexes:
+  #  enrollment_info_index:
+  #    fields:                       [ student_id, section_id, program_id, year, semester, academic_year ]
+  #    type:                         unique
+    #StudentAcademicStatus:          { local: academic_status, foreign: id, foreignAlias: EnrollmentInfos }
+    #StudentSemesterAction:          { local: semester_action, foreign: id, foreignAlias: EnrollmentInfos }    
+       
+Grade:          
+  actAs:                            { Timestampable: ~ }
+  columns:
+    grade_type_id:                  { type: integer, notnull: true }
+    gradechar:                      { type: varchar(15), notnull: true, unique: true } 
+    is_removable:                   { type: boolean, notnull: true }
+    is_repeated:                    { type: boolean, notnull: true } #Ask comoshimi,
+    is_calculated:                  { type: boolean, notnull: true }        
+    min_value:                      { type: float, notnull: true  } 
+    max_value:                      { type: float, notnull: true } 
+    value:                          { type: float, notnull: true }     
+  relations:
+    GradeType:                      { local: grade_type_id, foreign: id } 
+
+Registration:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    enrollment_info_id:             { type: integer, notnull: true }
+    date:		            { type: date, notnull: true }
+    is_grade_complain:		    { type: boolean, default: 0 }
+    is_reexam:		            { type: boolean, default: 0 }
+    is_makeup:		            { type: boolean, default: 0 }
+    is_add:		            { type: boolean, default: 0 }
+    is_drop:		            { type: boolean, default: 0 }
+    is_underloaded:                 { type: boolean, default: 0 }
+    is_overloaded:                  { type: boolean, default: 0 }
+    AC:                             { type: string(255) }    
+    remark:                         { type: string(255) }
+  relations:
+    EnrollmentInfo:                 { onDelete: CASCADE, local: enrollment_info_id, foreign: id, foreignAlias: Registrations }     
+    
+StudentCourseGrade:          
+  actAs:                            { Timestampable: ~ }
+  columns:
+    student_id:                     { type: integer, notnull: true }
+    instructor_id:                  { type: integer }
+    registration_id:                { type: integer, notnull: true }
+    course_id:                      { type: integer, notnull: true }
+    grade_id:                       { type: integer }
+    is_repeated:                    { type: boolean, notnull: true, default: 0 }
+    is_academic_repeated:           { type: boolean, notnull: true, default: 0 }
+    is_dropped:                     { type: boolean, notnull: true, default: 0 }
+    is_added:                       { type: boolean, notnull: true, default: 0 }
+    is_calculated:                  { type: boolean, notnull: true, default: 1 } #Can it be shown in report transcript?
+    is_exempted:                    { type: integer, notnull: true, default: 0 }
+    regrade_status:		              { type: integer, default: 0 }
+    grade_status:		                { type: boolean, notnull: true, default: 0 }
+    remark:                         { type: string(255) }
+  relations:
+    Grade:                          { local: grade_id, foreign: id }
+    Student:                        { local: student_id, foreign: id, foreignAlias: StudentCourseGrades }
+    Registration:                   { onDelete: CASCADE, local: registration_id, foreign: id, foreignAlias: StudentCourseGrades }            
+    Instructor:                     { local: instructor_id, foreign: id, foreignAlias: StudentCourseGrades }    
+    Course:                         { local: course_id, foreign: id, foreignAlias: StudentCourseGrades }      
+#  indexes:
+#    student_course_grade_index:
+#      fields:                       [ student_id, course_id, is_calculated ]
+#      type:                         unique
+StudentReadmission:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    enrollment_info_id:             { type: integer, notnull: true }
+    readmission_date:               { type: date, notnull: true }    
+    AC:                             { type: string(255) }
+    remark:                         { type: string(255) }    
+  relations:
+    EnrollmentInfo:                 { local: enrollment_info_id, foreign: id, foreignAlias: StudentReadmissions }    
+  indexes:
+    student_readmission_index:
+      fields:                       [ enrollment_info_id, readmission_date ]
+      type:                         unique
+
+
+StudentWithdrawal:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    enrollment_info_id:             { type: integer, notnull: true }
+    withdrawal_date:                { type: date, notnull: true }    
+    AC:                             { type: string(255) }
+    remark:                         { type: string(255) }    
+  relations:
+    EnrollmentInfo:                 { local: enrollment_info_id, foreign: id }   
+
+StudentExemption:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    student_id:                     { type: integer, notnull: true } 
+    course_id:                      { type: integer, notnull: true }
+    reason:                         { type: string(255) }   
+    grade:                          { type: string }  
+    remark:                         { type: string(255) }    
+  relations:
+    Student:                        { local: student_id, foreign: id, foreignAlias: StudentExemptions }    
+    Course:                         { local: course_id, foreign: id, foreignAlias: StudentExemptions }    
+  indexes:
+    exemption_index:
+      fields:                       [ student_id, course_id ] # Student cannot Exempt twice
+      type:                         unique
+
+    
+CourseRelationTypes:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    relation_name:                  { type: string(255), notnull: true }
+    remark:                         { type: string(255), notnull: true }    
+
+RelatedCourses:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    course_id:                      { type: integer, notnull: true }    
+    prerequisite_course_number:     { type: string(100), notnull: true }  # save course_number(or course code here) 
+    course_relation_type:           { type: string(100), notnull: true } # Prerequisite, corequisite, postrequisite
+    date_from:                      { type: date, notnull: false }     
+    date_to:                        { type: date, notnull: false }     
+  relations:
+    Course:                         { local: course_id, foreign: id }    
+  indexes:
+    course_relation_index:
+      fields:                       [ course_relation_type, course_id, prerequisite_course_number ]
+      type:                         unique
+
+
+StudentGraduate:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    student_id:                     { type: integer, notnull: true } 
+    graduation_date:                { type: date, notnull: true }  
+    AC:                             { type: string(255) } 
+  relations:
+    Student:                        { local: student_id, foreign: id }       
+
+StudentGCR:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    student_id:                     { type: integer, notnull: true } 
+    program_checklist_id:           { type: integer, notnull: true }
+    semester:                       { type: integer, notnull: true }   
+    total_credits:                  { type: integer, notnull: true }  
+    total_gradepoints:              { type: integer, notnull: true }  
+  relations:
+    Student:                        { local: student_id, foreign: id }     
+    ProgramCheckList:               { local: program_checklist_id, foreign: id }       
+
+Autoincrement:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    entity_name:                    { type: string(255), notnull: true } 
+    last_value:                     { type: integer, notnull: true }
+
+StudentLoad:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    enrollment_info_id:             { type: string(255), notnull: true } 
+    overload:                       { type: integer }
+    underload:                      { type: integer }
+
+User:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    login:                          { type: string(100), notnull: true }
+    password:                       { type: string(100), notnull: true }
+    first_name:                     { type: string(100), notnull: true }
+    fathers_name:                   { type: string(100), notnull: true }
+    grand_fathers_name:             { type: string(100), notnull: true }
+    privilege:                      { type: string(200), notnull: true }
+    gender:                         { type: string(10), notnull: true }
+    email:                          { type: string(100), notnull: true }
+    department_id:                  { type: integer, notnull: true }
+    is_active:                      { type: boolean, notnull: true }
+  relations:
+    Department:                     { onDelete: CASCADE, local: department_id, foreign: id, foreignAlias: Users } 
+  indexes:
+    login_index:
+      fields:                       [ login ]
+      type:                         unique
+    email_index:
+      fields:                       [ email ]
+      type:                         unique
+
+PromotionSetting:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    program_id:                     { type: integer, notnull: true }
+    current_year:                   { type: integer, notnull: true }
+    current_semester:               { type: integer, notnull: true }
+    to_year:                        { type: integer, notnull: true }
+    to_semester:                    { type: integer, notnull: true }
+  relations:
+    Program:                        { onDelete: CASCADE, local: program_id, foreign: id, foreignAlias: PromotionSettings } 
+  indexes:
+    promotion_index:
+      fields:                       [ program_id, current_year, current_semester, to_year, to_semester ]
+      type:                         unique
+
+CoursePool:
+  columns:
+    enrollment_info_id:             { type: integer, notnull: true }
+    course_id:                      { type: integer, notnull: true }
+  relations:
+    EnrollmentInfo:                 { onDelete: CASCADE, local: enrollment_info_id, foreign: id, foreignAlias: CoursePools }
+    Course:                         { onDelete: CASCADE, local: course_id, foreign: id, foreignAlias: CoursePools }
+  indexes:
+    course_pool_index:
+      fields:                       [ enrollment_info_id, course_id ]
+      type:                         unique
+
+StudentProgramSectionTransfer:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    student_id:                      { type: integer, notnull: true }
+    section_id:                      { type: integer, notnull: true }
+    to_section:                      { type: string(200), notnull: true }
+  relations:
+    Student:                         { onDelete: CASCADE, local: student_id, foreign: id, foreignAlias: StudentProgramSectionTransfers }
+    ProgramSection:                  { onDelete: CASCADE, local: section_id, foreign: id, foreignAlias: StudentProgramSectionTransfers }
+  indexes:
+    student_program_section_transfer_index:
+      fields:                       [ student_id, section_id ]
+      type:                         unique
+
+AuditLog:
+  actAs:                            { Timestampable: ~ }
+  columns:
+    user_id:                         { type: integer, notnull: true }
+    action:                          { type: string(500), notnull: true }
+  relations:
+    User:                            { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: AuditLogs }

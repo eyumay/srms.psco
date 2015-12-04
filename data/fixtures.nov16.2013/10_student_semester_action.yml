@@ -1,0 +1,41 @@
+StudentSemesterAction:
+  enrolled: 
+    name: Enrolled
+    value: 0
+    description: This is when the student is just enrolled to the program, but not registered    
+  registered: 
+    name: Registered
+    value: 1
+  promoted: 
+    name: Promoted
+    value: 2
+    description: This is when the student is just enrolled to the program, but not registered   
+  withdrawn:
+    name: Withdrwawn
+    value: 3
+    description: The student withdrawn    
+  under: 
+    name: Under
+    value: 4
+    description: Previously enrolled student is just registerred to a number of courses.
+  readmitted: 
+    name: Readmitted
+    value: 5
+    description: The student has withdrawn officially(ADR case, Illness case)
+  dismissed:
+    name: Dissmissed
+    value: 6
+    description: enrolled but when not registered
+  dropout:
+    name: Dropout
+    value: 7
+    description:  Drop out   
+#These are system wide configurations
+#0 - Fist time enrollment, after admission
+#1 - Registered to Courses
+#2 - Promoted
+#3 - Withdraw
+#4 - Under
+#5 - Readmitted
+#6 - Dismissed
+#7 - ADR

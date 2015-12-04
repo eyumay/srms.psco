@@ -1,0 +1,85 @@
+Autoincrement:
+  entity_1:
+    entity_name: Student
+    last_value: 0
+  entity_2:
+    entity_name: Faculty
+    last_value: 0
+  entity_3:
+    entity_name: Department
+    last_value: 0        
+  entity_4:
+    entity_name: AcademicPosition
+    last_value: 0
+  entity_5:
+    entity_name: AcademicCalendar
+    last_value: 0
+  entity_6:
+    entity_name: StudentSemesterAction
+    last_value: 0
+  entity_7:
+    entity_name: EnrollmentInfo
+    last_value: 0     
+  entity_8:
+    entity_name: EnrollmentType
+    last_value: 0
+  entity_9:
+    entity_name: Grade
+    last_value: 0
+  entity_10:
+    entity_name: GradeType
+    last_value: 0
+  entity_11:
+    entity_name: Instructor
+    last_value: 0
+  entity_12:
+    entity_name: Program
+    last_value: 0
+  entity_13:
+    entity_name: ProgramChecklist
+    last_value: 0
+  entity_14:
+    entity_name: ProgramSection
+    last_value: 0
+  entity_15:
+    entity_name: ProgramType
+    last_value: 0
+  entity_16:
+    entity_name: Registration
+    last_value: 0
+  entity_17:
+    entity_name: RelatedCourses
+    last_value: 0
+  entity_18:
+    entity_name: SectionCourseOffering
+    last_value: 0  
+  entity_19:
+    entity_name: SemesterType
+    last_value: 0
+  entity_20:
+    entity_name: StudentAcademicStatus
+    last_value: 0
+  entity_21:
+    entity_name: StudentCenter
+    last_value: 0
+  entity_22:
+    entity_name: StudentCourse
+    last_value: 0
+  entity_23:
+    entity_name: StudentCourseGrade
+    last_value: 0
+  entity_24:
+    entity_name: StudentExemption
+    last_value: 0
+  entity_25:
+    entity_name: StudentGraduate
+    last_value: 0
+  entity_26:
+    entity_name: StudentGCR
+    last_value: 0
+  entity_27:
+    entity_name: StudentReadmission
+    last_value: 0
+  entity_28:
+    entity_name: StudentWithdrawal
+    last_value: 0                                                      

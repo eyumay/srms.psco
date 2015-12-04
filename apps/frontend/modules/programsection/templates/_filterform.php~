@@ -1,0 +1,99 @@
+<div class="filter"> 
+<form action="<?php echo url_for('programsection/filter') ?>" method="get" name="form_filter">
+<fieldset>
+<table>
+<tr>
+ <td valign="top">Program:   <select name="program_id">
+        <option value="0" selected="selected"> --Select Program-- </option>
+
+        <?php
+        foreach ($programs as $program) {
+        ?>
+            <option value="<?php 
+        echo $program->getId();
+            ?>"><?php
+                echo $program->getName(); 
+            ?>
+            </option>
+            <?php 
+        }
+        ?>
+    </select> <br />
+ Center:   <select name="program_id">
+        <option value="0" selected="selected"> --Select Center-- </option>
+
+        <?php
+        foreach ($centers as $center) {
+        ?>
+            <option value="<?php 
+        echo $center->getId();
+            ?>"><?php
+                echo $center->getName(); 
+            ?>
+            </option>
+            <?php 
+        }
+        ?>
+    </select>     
+ </td> 
+  <td>Year:   <select name="year">
+       <option value="0" selected="selected"> --Select Student Year-- </option>
+
+        <?php
+        foreach ($years as $year) {
+        ?>
+            <option value="<?php echo $year ?>"> <?php echo $year; ?>
+            </option>
+            <?php 
+        }
+        ?>
+    </select>   <br />
+Semester:   <select name="semester">
+        <option value="0" selected="selected"> --Select Semester -- </option>
+
+        <?php
+        foreach ($semesters as $semester) {
+        ?>
+            <option value="<?php 
+        echo $semester;
+            ?>"><?php
+                echo $semester; 
+            ?>
+            </option>
+            <?php 
+        }
+        ?>
+    </select>   <br />    
+  Academic Year:   <select name="academic_year">
+        <option value="0" selected="selected"> --Select Academic Year-- </option>
+
+        <?php
+        foreach ($academicYears as $academicYear) {
+        ?>
+            <option value="<?php 
+        echo $academicYear;
+            ?>"><?php
+                echo $academicYear; 
+            ?>
+            </option>
+            <?php 
+        }
+        ?>
+        
+    </select>   <br />
+ ID NO.<input type="text" id="txtbox" name="student_uid" name="student_uid" title="Enter Student Id" value="Enter Student Id"  
+                  
+                  onfocus="if(this.value == $(this).attr('title')) {
+                  this.value = '';
+              }" 
+                  onblur=" 
+                    if(this.value == '') {
+                        this.value = $(this).attr('title');
+                    }"/></td> 
+
+</tr>
+</table>
+</fieldset>
+<p class="submit"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" value="Search" name="submit"> </p>
+</form>
+</div>

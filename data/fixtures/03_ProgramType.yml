@@ -1,0 +1,16 @@
+ProgramType:
+  BSC:
+    type: BSC
+    name: Bachelor of Science
+  LLB:
+    type: LLB
+    name: Bachelor of Laws
+  BA:
+    type: BA
+    name: Bachelor of Art
+  MSC:
+    type: MSC
+    name: Masters of Science
+  MA: 
+    type: MA
+    name: Masters of Art

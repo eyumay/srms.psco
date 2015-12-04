@@ -1,0 +1,7 @@
+AcademicCalendarEvents:
+  calendar_1:
+    CalendarEvents: normal_registration
+    AcademicCalendar: fresh_calendar
+    start_date: 03-05-2013
+    end_date: 03-06-2013
+    

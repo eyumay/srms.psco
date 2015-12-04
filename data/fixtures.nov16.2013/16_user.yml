@@ -1,0 +1,112 @@
+## YAML Template.
+User:
+  user_1:
+    Department: information_technology
+    login: jailan
+    password: qwerty12
+    first_name: Jailan
+    fathers_name: Awol
+    grand_fathers_name: Mohammed
+    gender: male
+    privilege: dataworker
+    email: jailan@psco.edu.et
+    is_active: 1
+  user_2:
+    Department: accounting
+    login: sintayehu
+    password: qwerty12
+    first_name: Sintayehu
+    fathers_name: Sintayehu
+    grand_fathers_name: PSCO
+    gender: female
+    privilege: dataworker
+    email: sintayehu@psco.edu.et
+    is_active: 1
+  user_3:
+    Department: human_resource_management
+    login: like
+    password: qwerty12
+    first_name: Like
+    fathers_name: regassa
+    grand_fathers_name: PSCO
+    gender: female
+    privilege: dataworker
+    email: like@psco.edu.et
+    is_active: 1    
+  user_4:
+    Department: abm
+    login: bedatu
+    password: qwerty12
+    first_name: Bedatu
+    fathers_name: regassa
+    grand_fathers_name: PSCO
+    gender: female
+    privilege: dataworker
+    email: bedatu@psco.edu.et
+    is_active: 1  
+  user_5:
+    Department: law
+    login: nelly
+    password: qwerty12
+    first_name: Nelly
+    fathers_name: regassa
+    grand_fathers_name: PSCO
+    gender: female
+    privilege: dataworker
+    email: nelly1@psco.edu.et
+    is_active: 1   
+  user_6:
+    Department: information_technology
+    login: anteneh
+    password: qwerty12
+    first_name: Anteneh 
+    fathers_name: Tilahun
+    grand_fathers_name: Chaka
+    gender: male
+    privilege: hod
+    email: jailan1@psco.edu.et
+    is_active: 1
+  user_7:
+    Department: accounting
+    login: mersha
+    password: qwerty12
+    first_name: Mersha
+    fathers_name: Getahun
+    grand_fathers_name: PSCO
+    gender: male
+    privilege: hod
+    email: sintayehu1@psco.edu.et
+    is_active: 1
+  user_8:
+    Department: human_resource_management
+    login: hager
+    password: qwerty12
+    first_name: Hagerbigegn
+    fathers_name: Hagerbigegn
+    grand_fathers_name: PSCO
+    gender: make
+    privilege: hod
+    email: like1@psco.edu.et
+    is_active: 1    
+  user_9:
+    Department: abm
+    login: getaneh
+    password: qwerty12
+    first_name: Getaneh
+    fathers_name: Seifu
+    grand_fathers_name: PSCO
+    gender: male
+    privilege: hod
+    email: bedatu1@psco.edu.et
+    is_active: 1  
+  user_10:
+    Department: law
+    login: matewos
+    password: qwerty12
+    first_name: Matewos
+    fathers_name: regassa
+    grand_fathers_name: PSCO
+    gender: male
+    privilege: hod
+    email: nelly2@psco.edu.et
+    is_active: 1

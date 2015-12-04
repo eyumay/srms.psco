@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * ProgramSection form.
+ *
+ * @package    srmsnew
+ * @subpackage form
+ * @author     Your name here
+ * @version    SVN: $Id: sfDoctrineFormTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ */
+class ProgramSectionForm extends BaseProgramSectionForm
+{
+  public function configure()
+  {
+  	 ## Widget
+    $this->setWidget['program_id'] = new sfWidgetFormDoctrineChoice(array(
+       'model' => $this->getRelatedModelName('Program'),
+       'add_empty' => 'Select Program',
+    ));   
+    $this->setWidget['center_id'] = new sfWidgetFormDoctrineChoice(array(
+       'model' => $this->getRelatedModelName('Center'),
+       'add_empty' => 'Select Center',
+    )); 
+    $this->widgetSchema['academic_year'] = new sfWidgetFormChoice(array('choices'=>FormChoices::getAcademicYear() ));
+    $this->widgetSchema['year'] = new sfWidgetFormChoice(array('choices'=>FormChoices::getYearChoices() ));
+    $this->widgetSchema['semester'] = new sfWidgetFormChoice(array('choices'=>FormChoices::getSemesterChoices() ));
+    $this->widgetSchema['section_number'] = new sfWidgetFormChoice(array('choices'=>FormChoices::getSectionChoices() ));    
+  	   	 
+    ## Validator
+    $this->setValidator['program_id'] = new sfWidgetFormDoctrineChoice(array(
+       'model' => $this->getRelatedModelName('Program'),
+    ));    
+    $this->setValidator['center_id'] = new sfWidgetFormDoctrineChoice(array(
+       'model' => $this->getRelatedModelName('Center'),
+    ));      
+    $this->validatorSchema['academic_year'] = new sfValidatorChoice(array('choices' => array_keys(FormChoices::getAcademicYear()), 'required' => true ));
+    $this->validatorSchema['year'] = new sfValidatorChoice(array('choices' => array_keys(FormChoices::getSemesterChoices()), 'required' => true ));
+    $this->validatorSchema['semester'] = new sfValidatorChoice(array('choices' => array_keys(FormChoices::getYearChoices()), 'required' => true ));
+    $this->validatorSchema['section_number'] = new sfValidatorChoice(array('choices' => array_keys(FormChoices::getSectionChoices()), 'required' => true ));
+        
+    
+    $this->widgetSchema->setLabels(array(
+        'program_id'=>'Program *',
+        'center_id'=>'Center *',
+        'academic_year'=>'Academic Year *',
+        'semester'=>'Semester *',
+        'year'=>'Year * ',
+    ));
+    
+    ## unset the following fields       	   	 
+    unset($this['created_at'], $this['updated_at'], $this['number_of_student'], $this['is_promoted']);
+      
+  }
+}

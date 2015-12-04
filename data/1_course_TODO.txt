@@ -1,0 +1,71 @@
+#TODO 
+Course
+- categorize courses as Major course, Common course and Supportive course
+	-> Common Course
+	-> Supportive Course
+	-> Major Course
+- control course phase outs or substitutes;
+- Course Pre-requisites.
+
+## Course repeating:
+- WHEN TO REPEAT MAJOR COURSE? - Student repeats courses scored C-, D, D+, F (below C-)
+  Provided that CGPA is >=2.00
+- WHEN TO REPEAT COMMON and SUPPORTIVE courses? - Courses scored F.
+- Repeated course max score is C.
+
+-> Major courses could be repeated again and again untill required level is achieved.
+-> Other courses are only repeated once, unless students are allowed.
+
+
+## Course Load
+REGULAR
+Nornal Semester
+- Max: 18chrs, Min: 15chrs.
+Summer semester##Two month semester
+- Max: 10, Min 7
+Summer Semester## Three months Semester
+Max: 14, Min:10
+
+EXTENSION/EVENING
+Normal Semester,
+- Max: 13chrs, Min: 9chrs
+- special cases->Max 15
+	- Graduating student OR
+	- Completed 24chrs AND CGPA>=2.4
+Summer semester:## two month Semester
+- Min: 4, Max: 6
+Summer Semester## Three months Semester
+- Max: 6, Min:8
+
+**Two summer semesters are equivalent to one academic year, 
+
+WEEKEND PROGRAM,
+Normal Semester
+- Max: 13chrs, Min: 9chrs
+-Special cases->Max: 15chrs
+	- Graduation year
+	- completed 24chrs AND CGPA>=2.4
+
+** Departments can decide course loads, RULE should be customisable.
+** Departments can allow Max: 22chrs ... based on some conditions.
+
+-> Course waiver: course are removed for one student with good reasons
+-------------------------------------------------------------------------
+
+GRADUATION
+- CGPA>=2.00, in both Major and Minor courses,
+- D or F in phased out course may not disallow graduation
+- No D in Major course, and No F in any course
+- senior essay course min of C Grade
+
+-------------------------------------------------------------------------
+The following shall constitute the requirements for academic distinction upon graduation of 
+undergraduate degree programs:
+83.1. A student with a CGPA of 3.75 or above shall graduate with ‘Very Great Distinction’;
+83.2. A student with a CGPA of 3.5 to 3.74 shall graduate with ‘Great Distinction’;
+83.3. A student with a CGPA of 3.25 to 3.49 shall graduate with ‘Distinction’;
+----------------------------------------------------------------------------
+
+WITHDRAWAL
+- With in 30 days of dicontinuation of classes.
+

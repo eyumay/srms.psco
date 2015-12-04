@@ -1,0 +1,74 @@
+Things to consider while performing promotion
+0. mark current program_section status to inactive, so selection of active classes should be possible
+1. Promote students only with WARNING and PASS status
+2. Find class current year and semester, and define where to promote i.e, next year and semester
+3. create section to enroll students to
+4. 
+. Keep current semester results    
+## Current semester
+    - semester_chr
+    - semester_grade_points
+    - semester_repeated_chrs
+    - semester_repeated_grade_points
+    - total_chrs                    = total_chrs+semester_chrs
+    - total_grade_points            = total_grade_points + semester_grade_points
+    - total_repeated_chrs           = total_repeated_chrs + semester_repeated_chrs
+    - total_repeated_grade_points   = total_repeated_grade_points + semester_repeated_grade_points
+## Following semester 
+  As
+    - previous_chrs                     = semester_chrs
+    - previous_grade_points             = semester_grade_points
+    - previous_repeated_chrs            = semester_repeated_chrs
+    - previous_repeated_grade_points    = semester_repeated_chrs
+
+    i.e,
+    copy semester_chr -> previous_chr
+
+
+#Promotion setting:
+- section_id
+- current_academic_year
+- current_year
+- current_semester
+- to_progam_id
+- to_section_id
+- to_academic_year
+- to_year
+- to_semester
+  - academic_calendar,
+- pass_point
+
+
+## Depends on Program Curriculum
+program	current_year	current_semester	current_academic_year   to_year	to_semester to_academic_year    section_id
+IT	1		1                       2012/13                 1	2           2012/13             11                          
+IT	1		2                       2012/13                 2	1           2012/13             11
+IT	2		1                       2012/13                 2	2           2012/13             11
+IT	2		2                       2012/13                 3	1           2012/13             11
+IT	3		1                       2012/13                 3	2           2012/13             11
+IT	3		2                       2012/13                 4	1           2012/13             11
+IT	4		1                       2012/13                 4	2           2012/13             11
+IT	4		2                       2012/13                 -	-           -
+
+######################################
+
+Today TODO
+** Create promotion setting should be administrative action
+** Create Promotion Setting -> link should be visible to only admin, and on ProgramSection > Sectiondetail action
+
+1. Create one section after database reset and test the promotion setting
+   - Also define __toString() method for ProgramSection
+2. Promotion setting should only be displayed to data workers department specific, IT should not see Law promotion setting.
+   - ProgramSection field at PromotionSetting should display department specific
+3. ON CREATE NEW PROMOTION SETTING
+    - This page should only be accessed from SECTIONDETAIL page so
+        -> current academic year (from session)
+        -> current year(from session)
+        -> current semester(from session)
+        -> section_id(from session)
+   Now the form should display fields only where to promote 
+    - to year
+    - to semester
+    - pass point
+
+
